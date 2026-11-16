@@ -1,432 +1,879 @@
 <!DOCTYPE html>
 <html lang="zh-TW" class="h-full">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Y2K PORTFOLIO HUB - 2026 EDITION</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y2K PORTFOLIO HUB - 2026 EDITION</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
 
-<script>
-tailwind.config = {
-theme: {
-extend: {
-fontFamily: {
-pixel: ['"Press Start 2P"', 'monospace'],
-vt: ['"VT323"', 'monospace'],
-tech: ['"Share Tech Mono"', 'monospace'],
-},
-colors: {
-y2k: {
-bg: '#080514',
-pink: '#ff007f',
-cyan: '#00f3ff',
-yellow: '#ffe600',
-purple: '#8b00ff',
-silver: '#c0c0c0',
-darkcard: '#120d26',
-}
-},
-boxShadow: {
-'neon-pink': '0 0 15px rgba(255, 0, 127, 0.6), inset 0 0 10px rgba(255, 0, 127, 0.4)',
-'neon-cyan': '0 0 15px rgba(0, 243, 255, 0.6), inset 0 0 10px rgba(0, 243, 255, 0.4)',
-'neon-yellow': '0 0 15px rgba(255, 230, 0, 0.6), inset 0 0 10px rgba(255, 230, 0, 0.4)',
-}
-}
-}
-}
-</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            pixel: ['"Press Start 2P"', 'monospace'],
+            vt: ['"VT323"', 'monospace'],
+            tech: ['"Share Tech Mono"', 'monospace'],
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            y2k: {
+              bg: '#080514',
+              pink: '#ff007f',
+              cyan: '#00f3ff',
+              yellow: '#ffe600',
+              purple: '#8b00ff',
+              silver: '#c0c0c0',
+              darkcard: '#120d26',
+            }
+          },
+          boxShadow: {
+            'neon-pink': '0 0 15px rgba(255, 0, 127, 0.6), inset 0 0 10px rgba(255, 0, 127, 0.4)',
+            'neon-cyan': '0 0 15px rgba(0, 243, 255, 0.6), inset 0 0 10px rgba(0, 243, 255, 0.4)',
+            'neon-yellow': '0 0 15px rgba(255, 230, 0, 0.6), inset 0 0 10px rgba(255, 230, 0, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
 
-<style>
-/* Background Grid Pattern */
-.cyber-grid {
-background-size: 40px 40px;
-background-image:
-linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
-linear-gradient(to bottom, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
-}
+  <style>
+    /* Background Grid Pattern */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(0, 243, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 0, 127, 0.08) 1px, transparent 1px);
+    }
 
-/* CRT Scanline Overlay */
-.crt-overlay::before {
-content: " ";
-display: block;
-position: fixed;
-top: 0; left: 0; bottom: 0; right: 0;
-background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-z-index: 100;
-background-size: 100% 4px, 6px 100%;
-pointer-events: none;
-}
+    /* CRT Scanline Overlay */
+    .crt-overlay::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      z-index: 100;
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+    }
 
-/* Glitch Animation */
-@keyframes glitch {
-0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f3ff; }
-25% { text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff; }
-50% { text-shadow: 1px -1px #ff007f, -1px 1px #00f3ff; }
-75% { text-shadow: -2px 1px #ff007f, 2px -1px #00f3ff; }
-100% { text-shadow: 2px 0 #ff007f, -2px 0 #00f3ff; }
-}
-.glitch-text {
-animation: glitch 2.5s infinite alternate;
-}
+    /* Glitch Animation */
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 #ff007f, -2px 0 #00f3ff; }
+      25% { text-shadow: -2px 0 #ff007f, 2px 0 #00f3ff; }
+      50% { text-shadow: 1px -1px #ff007f, -1px 1px #00f3ff; }
+      75% { text-shadow: -2px 1px #ff007f, 2px -1px #00f3ff; }
+      100% { text-shadow: 2px 0 #ff007f, -2px 0 #00f3ff; }
+    }
+    .glitch-text { animation: glitch 2.5s infinite alternate; }
 
-/* Shake Animation for Locked Levels */
-@keyframes shake {
-0%, 100% { transform: translateX(0); }
-20% { transform: translateX(-6px) rotate(-1.5deg); }
-40% { transform: translateX(6px) rotate(1.5deg); }
-60% { transform: translateX(-4px); }
-80% { transform: translateX(4px); }
-}
-.animate-shake {
-animation: shake 0.35s ease-in-out;
-}
+    /* Shake Animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px) rotate(-1.5deg); }
+      40% { transform: translateX(6px) rotate(1.5deg); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+    .animate-shake { animation: shake 0.35s ease-in-out; }
 
-/* Holographic Border Gradient */
-.holo-border {
-border: 2px solid transparent;
-border-image: linear-gradient(135deg, #00f3ff, #ff007f, #ffe600) 1;
-}
+    /* Khung & Nền Avatar mới: Cyber Hexagon + Radar + Nền mạch phát sáng */
+    .avatar-hex-frame {
+      clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    }
+    .avatar-cyber-bg {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(0, 243, 255, 0.45), transparent 55%),
+        radial-gradient(circle at 75% 80%, rgba(255, 0, 127, 0.45), transparent 55%),
+        repeating-linear-gradient(0deg, rgba(0, 243, 255, 0.14) 0px, rgba(0, 243, 255, 0.14) 1px, transparent 1px, transparent 8px),
+        linear-gradient(135deg, #1b0b3b 0%, #07192b 50%, #260824 100%);
+    }
+    @keyframes spinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .animate-spin-reverse {
+      animation: spinReverse 10s linear infinite;
+    }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-width: 8px;
-}
-::-webkit-scrollbar-track {
-background: #080514;
-}
-::-webkit-scrollbar-thumb {
-background: #ff007f;
-border-radius: 4px;
-}
-</style>
+    /* 3D Flip Card cho Week 7 */
+    .flip-card { perspective: 1000px; height: 155px; }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .flip-front {
+      background: #E9E6DF;
+      border: 1px solid #D6D1C7;
+      color: #5C5952;
+    }
+    .flip-back {
+      background: #FFFFFF;
+      border: 1.5px solid #8A9A86;
+      transform: rotateY(180deg);
+      box-shadow: 0 6px 18px rgba(55, 53, 47, 0.08);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #080514; }
+    ::-webkit-scrollbar-thumb { background: #ff007f; border-radius: 4px; }
+  </style>
 </head>
 <body class="bg-y2k-bg text-white font-tech h-full min-h-screen cyber-grid relative crt-overlay select-none flex flex-col justify-between overflow-x-hidden">
 
-<!-- Header & Control Bar -->
-<header class="w-full p-4 border-b-2 border-y2k-pink/50 bg-black/60 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center px-6">
-<div class="flex items-center space-x-3">
-<span class="inline-block w-3 h-3 rounded-full bg-y2k-pink animate-ping"></span>
-<h1 class="font-pixel text-xs md:text-sm text-y2k-cyan tracking-wider uppercase glitch-text">
-SYSTEM v2.0.26 // PORTFOLIO
-</h1>
-</div>
+  <!-- ==================== GIAO DIỆN 1: Y2K PORTFOLIO HUB ==================== -->
+  <div id="hub-view" class="flex flex-col min-h-screen justify-between">
+    <!-- Header & Control Bar -->
+    <header class="w-full p-4 border-b-2 border-y2k-pink/50 bg-black/60 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center px-6">
+      <div class="flex items-center space-x-3">
+        <span class="inline-block w-3 h-3 rounded-full bg-y2k-pink animate-ping"></span>
+        <h1 class="font-pixel text-xs md:text-sm text-y2k-cyan tracking-wider uppercase glitch-text">
+          SYSTEM v2.0.26 // PORTFOLIO
+        </h1>
+      </div>
 
-<!-- Controls: CRT & Sound Toggles -->
-<div class="flex items-center space-x-3 text-xs">
-<button id="audio-toggle" class="px-3 py-1 bg-y2k-darkcard border border-y2k-cyan text-y2k-cyan hover:bg-y2k-cyan hover:text-black transition-all rounded font-pixel flex items-center gap-1">
-🔊 <span id="audio-status">SFX: ON</span>
-</button>
-<button id="crt-toggle" class="px-3 py-1 bg-y2k-darkcard border border-y2k-pink text-y2k-pink hover:bg-y2k-pink hover:text-black transition-all rounded font-pixel flex items-center gap-1">
-📺 <span id="crt-status">CRT: ON</span>
-</button>
-</div>
-</header>
+      <!-- Controls: CRT & Sound Toggles -->
+      <div class="flex items-center space-x-3 text-xs">
+        <button id="audio-toggle" class="px-3 py-1 bg-y2k-darkcard border border-y2k-cyan text-y2k-cyan hover:bg-y2k-cyan hover:text-black transition-all rounded font-pixel flex items-center gap-1">
+          <span id="audio-status">SFX: ON</span>
+        </button>
+        <button id="crt-toggle" class="px-3 py-1 bg-y2k-darkcard border border-y2k-pink text-y2k-pink hover:bg-y2k-pink hover:text-black transition-all rounded font-pixel flex items-center gap-1">
+          <span id="crt-status">CRT: ON</span>
+        </button>
+      </div>
+    </header>
 
-<!-- Main Content Container -->
-<main class="container mx-auto px-4 py-8 max-w-5xl flex-grow flex flex-col items-center justify-center">
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-8 max-w-5xl flex-grow flex flex-col items-center justify-center">
 
-<!-- Profile Section (Center) -->
-<section class="w-full max-w-xl bg-y2k-darkcard/90 border-2 border-y2k-cyan p-6 rounded-2xl shadow-neon-cyan mb-10 text-center relative backdrop-blur-md transform transition-transform hover:scale-[1.01]">
+      <!-- Profile Section (Center) -->
+      <section class="w-full max-w-xl bg-y2k-darkcard/90 border-2 border-y2k-cyan p-6 rounded-2xl shadow-neon-cyan mb-10 text-center relative backdrop-blur-md transform transition-transform hover:scale-[1.01]">
 
-<!-- Decorative Corner Accents -->
-<div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-y2k-yellow"></div>
-<div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-y2k-yellow"></div>
-<div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-y2k-yellow"></div>
-<div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-y2k-yellow"></div>
+        <!-- Decorative Corner Accents -->
+        <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-y2k-yellow"></div>
+        <div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-y2k-yellow"></div>
+        <div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-y2k-yellow"></div>
+        <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-y2k-yellow"></div>
 
-<!-- Avatar with Pulsing Hologram Glow -->
-<div class="relative w-28 h-28 mx-auto mb-4 group">
-<div class="absolute inset-0 rounded-full bg-gradient-to-r from-y2k-pink via-y2k-yellow to-y2k-cyan blur-md opacity-75 group-hover:opacity-100 animate-spin" style="animation-duration: 8s;"></div>
-<img
-src="https://api.dicebear.com/7.x/pixel-art/svg?seed=CyberPlayer2026&backgroundColor=0b091a"
-alt="Avatar"
-class="relative w-full h-full rounded-full border-2 border-y2k-cyan bg-black object-cover p-1"
-onerror="this.src='https://placehold.co/120x120/120d26/00f3ff?text=AVATAR'"
-/>
-<span class="absolute bottom-1 right-1 bg-y2k-pink text-black text-[10px] font-pixel px-1.5 py-0.5 rounded-full border border-white">LVL.4</span>
-</div>
+        <!-- KHUNG & NỀN AVATAR MỚI (Cyber Hexagon Frame + Dual Radar + Circuit Glow BG) -->
+        <div class="relative w-36 h-36 mx-auto mb-4 group flex items-center justify-center cursor-pointer" onclick="cycleAvatar()" title="點擊切換角色外觀">
+          <!-- Vòng hào quang ngoài xoay thuận -->
+          <div class="absolute inset-0 rounded-full border-2 border-dashed border-y2k-cyan/70 animate-spin" style="animation-duration: 12s;"></div>
+          <!-- Vòng radar trong xoay ngược -->
+          <div class="absolute inset-2 rounded-full border border-dotted border-y2k-pink/80 animate-spin-reverse"></div>
+          <!-- Lớp phát sáng nền sau khung lục giác -->
+          <div class="absolute inset-3 avatar-hex-frame bg-gradient-to-tr from-y2k-pink via-y2k-cyan to-y2k-yellow p-[3px] shadow-[0_0_25px_rgba(0,243,255,0.65)] group-hover:shadow-[0_0_30px_rgba(255,0,127,0.85)] transition-all">
+            <!-- Nền bên trong khung Avatar -->
+            <div class="w-full h-full avatar-hex-frame avatar-cyber-bg flex items-center justify-center overflow-hidden relative">
+              <img
+                id="player-avatar-img"
+                src="https://api.dicebear.com/7.x/pixel-art/svg?seed=CyberPlayer2026"
+                alt="Avatar"
+                class="w-24 h-24 object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.85)] group-hover:scale-110 transition-transform duration-300"
+                onerror="this.src='https://placehold.co/120x120/120d26/00f3ff?text=AVATAR'"
+              />
+              <!-- Hiệu ứng quét sáng ngang trên nền avatar -->
+              <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-y2k-cyan/25 to-transparent pointer-events-none"></div>
+            </div>
+          </div>
 
-<!-- Player Name -->
-<h2 class="text-2xl md:text-3xl font-pixel text-y2k-yellow tracking-widest mb-1 drop-shadow-[0_2px_4px_rgba(255,230,0,0.5)]">
-PLAYER_ONE
-</h2>
-<p class="text-xs text-y2k-cyan font-tech tracking-wider uppercase mb-4">
-&lt; FRONTEND CYBER DEVELOPER / CREATOR &gt;
-</p>
+          <!-- Nhãn LVL góc dưới phải -->
+          <span class="absolute bottom-1 right-1 bg-y2k-pink text-black text-[10px] font-pixel px-2 py-0.5 rounded-full border border-white shadow-[0_0_8px_#ff007f]">
+            LVL.8
+          </span>
+          <!-- Nút đổi ảnh cá nhân góc dưới trái -->
+          <label onclick="event.stopPropagation()" title="上傳自訂頭像"
+            class="absolute bottom-1 left-1 bg-y2k-darkcard hover:bg-y2k-cyan text-y2k-cyan hover:text-black text-[10px] font-pixel px-1.5 py-0.5 rounded-full border border-y2k-cyan cursor-pointer transition-colors">
+            +
+            <input type="file" accept="image/*" class="hidden" onchange="uploadCustomAvatar(event)">
+          </label>
+        </div>
 
-<!-- Status Bar Panel -->
-<div class="bg-black/80 border border-y2k-pink/60 p-4 rounded-xl text-left space-y-2">
-<div class="flex justify-between items-center text-xs font-pixel">
-<span class="text-y2k-pink flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-y2k-pink animate-pulse"></span>
-STATUS: ONLINE
-</span>
-<span class="text-y2k-yellow font-bold">COMPLETED: 4 / 16</span>
-</div>
+        <!-- Player Name -->
+        <h2 class="text-2xl md:text-3xl font-pixel text-y2k-yellow tracking-widest mb-1 drop-shadow-[0_2px_4px_rgba(255,230,0,0.5)]">
+          PLAYER_ONE
+        </h2>
+        <p class="text-xs text-y2k-cyan font-tech tracking-wider uppercase mb-4">
+          &lt; FRONTEND CYBER DEVELOPER / CREATOR &gt;
+        </p>
 
-<!-- Progress Bar (4/16 = 25%) -->
-<div class="w-full h-4 bg-y2k-darkcard border border-y2k-cyan/50 rounded-full p-0.5 relative overflow-hidden">
-<div class="h-full bg-gradient-to-r from-y2k-cyan via-y2k-pink to-y2k-yellow rounded-full transition-all duration-1000 shadow-[0_0_10px_#00f3ff]" style="width: 25%;"></div>
-</div>
+        <!-- Status Bar Panel -->
+        <div class="bg-black/80 border border-y2k-pink/60 p-4 rounded-xl text-left space-y-2">
+          <div class="flex justify-between items-center text-xs font-pixel">
+            <span class="text-y2k-pink flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-y2k-pink animate-pulse"></span>
+              STATUS: ONLINE
+            </span>
+            <span class="text-y2k-yellow font-bold">COMPLETED: 8 / 16</span>
+          </div>
 
-<div class="flex justify-between text-[11px] text-gray-400 font-tech">
-<span>PROGRESS: 25%</span>
-<span>NEXT: WEEK 5 (LOCKED)</span>
-</div>
-</div>
-</section>
+          <!-- Progress Bar (8/16 = 50%) -->
+          <div class="w-full h-4 bg-y2k-darkcard border border-y2k-cyan/50 rounded-full p-0.5 relative overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-y2k-cyan via-y2k-pink to-y2k-yellow rounded-full transition-all duration-1000 shadow-[0_0_10px_#00f3ff]" style="width: 50%;"></div>
+          </div>
 
-<!-- Notification Toast Box -->
-<div id="toast" class="opacity-0 transition-opacity duration-300 fixed top-20 right-6 z-50 bg-red-900/90 border-2 border-red-500 text-red-200 px-4 py-2 rounded-lg shadow-lg font-pixel text-xs flex items-center gap-2 pointer-events-none">
-<span>⚠️</span> <span id="toast-msg">ACCESS DENIED</span>
-</div>
+          <div class="flex justify-between text-[11px] text-gray-400 font-tech">
+            <span>PROGRESS: 50%</span>
+            <span>NEXT: WEEK 9 (LOCKED)</span>
+          </div>
+        </div>
+      </section>
 
-<!-- Level Cards Grid (4x4 Matrix) -->
-<section class="w-full">
-<div class="flex items-center justify-between mb-4 px-2">
-<h3 class="font-pixel text-sm text-y2k-cyan uppercase flex items-center gap-2">
-<span>⚡</span> STAGE SELECT (16 WEEKS)
-</h3>
-<span class="text-xs text-y2k-pink font-vt text-base">SELECT A LEVEL TO LAUNCH</span>
-</div>
+      <!-- Notification Toast Box -->
+      <div id="toast" class="opacity-0 transition-opacity duration-300 fixed top-20 right-6 z-50 bg-red-900/90 border-2 border-red-500 text-red-200 px-4 py-2 rounded-lg shadow-lg font-pixel text-xs flex items-center gap-2 pointer-events-none">
+        <span>⚠</span> <span id="toast-msg">ACCESS DENIED</span>
+      </div>
 
-<!-- Grid Container -->
-<div id="grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<!-- Level Cards dynamically injected via JavaScript -->
-</div>
-</section>
+      <!-- Level Cards Grid (4x4 Matrix) -->
+      <section class="w-full">
+        <div class="flex items-center justify-between mb-4 px-2">
+          <h3 class="font-pixel text-sm text-y2k-cyan uppercase flex items-center gap-2">
+            <span>▶</span> STAGE SELECT (16 WEEKS)
+          </h3>
+          <span class="text-xs text-y2k-pink font-vt text-base">SELECT A LEVEL TO LAUNCH</span>
+        </div>
 
-</main>
+        <!-- Grid Container -->
+        <div id="grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Level Cards dynamically injected via JavaScript -->
+        </div>
+      </section>
 
-<!-- Footer -->
-<footer class="w-full border-t border-y2k-pink/30 bg-black/80 py-4 text-center text-xs text-gray-500 font-vt text-lg mt-8">
-<p>Y2K PORTFOLIO SYSTEM © 2026 // ALL RIGHTS RESERVED</p>
-</footer>
+    </main>
 
-<!-- JavaScript Code -->
-<script>
-// Audio Context Setup for 8-bit Sound Effects
-let audioCtx = null;
-let sfxEnabled = true;
+    <!-- Footer -->
+    <footer class="w-full border-t border-y2k-pink/30 bg-black/80 py-4 text-center text-xs text-gray-500 font-vt text-lg mt-8">
+      <p>Y2K PORTFOLIO SYSTEM © 2026 // ALL RIGHTS RESERVED</p>
+    </footer>
+  </div>
 
-function initAudio() {
-if (!audioCtx) {
-audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-}
-}
+  <!-- ==================== GIAO DIỆN 2: WEEK 7 雲端心電感應 (NOTION + MORANDI) ==================== -->
+  <div id="telepathy-view" class="hidden min-h-screen bg-[#F6F5F2] text-[#37352F] font-sans select-text relative z-40">
+    <!-- Top Bar -->
+    <nav class="sticky top-0 z-20 bg-[#F6F5F2]/90 backdrop-blur border-b border-[#E3E0D8] px-4 py-3">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3 text-sm">
+          <button onclick="closeTelepathyGame()" class="px-3 py-1.5 rounded-lg bg-[#EAE7E0] hover:bg-[#DDD9CF] text-[#4A4842] font-medium transition">
+            ← 返回 Y2K 選單
+          </button>
+          <span class="text-[#9B978E]">/</span>
+          <span class="font-bold text-[#37352F]">🧠 Week 7 · 雲端心電感應</span>
+        </div>
+        <div id="nav-room-badge" class="hidden items-center gap-2 text-xs">
+          <span class="px-2.5 py-1 rounded-full bg-[#8A9A86]/20 text-[#52614E] font-semibold">
+            房號：<span id="display-room">----</span>
+          </span>
+          <button onclick="copyInviteLink()" class="px-2.5 py-1 rounded-md border border-[#D4D0C7] bg-white hover:bg-[#F2EFE9] text-[#5C5952] transition">
+            複製連結
+          </button>
+        </div>
+      </div>
+    </nav>
 
-// Play synthesized hover beep sound
-function playHoverSound() {
-if (!sfxEnabled) return;
-try {
-initAudio();
-const osc = audioCtx.createOscillator();
-const gain = audioCtx.createGain();
-osc.type = 'sine';
-osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
-gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-osc.connect(gain);
-gain.connect(audioCtx.destination);
-osc.start();
-osc.stop(audioCtx.currentTime + 0.05);
-} catch (e) {}
-}
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <!-- Login / Room Routing -->
+      <section id="login-panel" class="max-w-md mx-auto bg-[#FDFCFB] border border-[#E3E0D8] rounded-2xl p-6 shadow-sm">
+        <div class="mb-5">
+          <span class="inline-block text-xs px-2.5 py-1 rounded-md bg-[#C28E83]/15 text-[#9A655A] font-medium mb-2">
+            Notion Minimal · Morandi Palette
+          </span>
+          <h2 class="text-2xl font-bold text-[#37352F]">雲端心電感應</h2>
+          <p class="text-sm text-[#78756E] mt-1">輸入房號與玩家暱稱，測試你們的默契指數。</p>
+        </div>
 
-// Play synthesized click success sound
-function playClickSound() {
-if (!sfxEnabled) return;
-try {
-initAudio();
-const osc = audioCtx.createOscillator();
-const gain = audioCtx.createGain();
-osc.type = 'square';
-osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.08);
-gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
-osc.connect(gain);
-gain.connect(audioCtx.destination);
-osc.start();
-osc.stop(audioCtx.currentTime + 0.2);
-} catch (e) {}
-}
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-[#5C5952] mb-1.5">房間號碼 (Room ID)</label>
+            <div class="flex gap-2">
+              <input id="input-room" type="text" placeholder="例如：8824"
+                class="flex-1 px-3.5 py-2.5 rounded-xl border border-[#D8D4CB] bg-[#FAF9F6] text-sm focus:outline-none focus:border-[#8A9A86]" />
+              <button onclick="generateRoomCode()" type="button"
+                class="px-3.5 py-2.5 rounded-xl bg-[#EAE7E0] hover:bg-[#DFDBD1] text-xs font-semibold text-[#4A4842] transition">
+                隨機開房
+              </button>
+            </div>
+          </div>
 
-// Play synthesized locked error sound
-function playLockedSound() {
-if (!sfxEnabled) return;
-try {
-initAudio();
-const osc = audioCtx.createOscillator();
-const gain = audioCtx.createGain();
-osc.type = 'sawtooth';
-osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.1);
-gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
-osc.connect(gain);
-gain.connect(audioCtx.destination);
-osc.start();
-osc.stop(audioCtx.currentTime + 0.25);
-} catch (e) {}
-}
+          <div>
+            <label class="block text-xs font-semibold text-[#5C5952] mb-1.5">你的玩家名稱</label>
+            <input id="input-player" type="text" placeholder="輸入暱稱..."
+              class="w-full px-3.5 py-2.5 rounded-xl border border-[#D8D4CB] bg-[#FAF9F6] text-sm focus:outline-none focus:border-[#8A9A86]" />
+          </div>
 
-// Data for 16 Stages
-const levelsData = [
-{ week: 1, title: "Week 1 - 數位名片", url: "w1/index.html", unlocked: true },
-{ week: 2, title: "Week 2 - 今天吃甚麼?", url: "w2/index.html", unlocked: true },
-{ week: 3, title: "Week 3 - 課堂作業 3", url: "w3/index.html", unlocked: true },
-{ week: 4, title: "Week 4 - 課堂作業 4", url: "w4/index.html", unlocked: true },
-{ week: 5, title: "Week 5 - 課堂作業 5", url: "w5/index.html", unlocked: true },
-{ week: 6, title: "Week 6 - 課堂作業 6", url: "w6/index.html", unlocked: true },
-{ week: 7, title: "Week 7 - 課堂作業 7", url: "w7/index.html", unlocked: true },
-{ week: 8, title: "Week 8 - 期中專案", url: "w8/index.html", unlocked: true },
-{ week: 9, title: "Week 9 - 課堂作業 9", url: "w9/index.html", unlocked: false },
-{ week: 10, title: "Week 10 - 課堂作業 10", url: "w10/index.html", unlocked: false },
-{ week: 11, title: "Week 11 - 課堂作業 11", url: "w11/index.html", unlocked: false },
-{ week: 12, title: "Week 12 - 課堂作業 12", url: "w12/index.html", unlocked: false },
-{ week: 13, title: "Week 13 - 課堂作業 13", url: "w13/index.html", unlocked: false },
-{ week: 14, title: "Week 14 - 課堂作業 14", url: "w14/index.html", unlocked: false },
-{ week: 15, title: "Week 15 - 課堂作業 15", url: "w15/index.html", unlocked: false },
-{ week: 16, title: "Week 16 - 期末專案", url: "w16/index.html", unlocked: false },
-];
+          <button onclick="joinRoom()"
+            class="w-full py-3 rounded-xl bg-[#8A9A86] hover:bg-[#778773] text-white font-semibold text-sm transition shadow-sm">
+            進入房間 →
+          </button>
+        </div>
+      </section>
 
-// Show Notification Toast
-function showToast(msg) {
-const toast = document.getElementById('toast');
-const toastMsg = document.getElementById('toast-msg');
-toastMsg.innerText = msg;
-toast.classList.remove('opacity-0');
-toast.classList.add('opacity-100');
-setTimeout(() => {
-toast.classList.remove('opacity-100');
-toast.classList.add('opacity-0');
-}, 2000);
-}
+      <!-- Main Game Room -->
+      <section id="game-panel" class="hidden space-y-6">
+        <!-- Notion Callout Question -->
+        <div class="bg-[#FDFCFB] border border-[#E3E0D8] rounded-2xl p-5 flex items-start gap-4 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-[#C28E83]/20 text-[#9A655A] flex items-center justify-center text-xl shrink-0">
+            💡
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-[#8E8A80]">本回合題目</span>
+              <span id="status-pill" class="text-xs px-2.5 py-0.5 rounded-full bg-[#EAE7E0] text-[#5C5952]">等待出題中</span>
+            </div>
+            <h3 id="question-text" class="text-xl font-bold text-[#37352F] mt-1">
+              等待房主設定題目...
+            </h3>
+          </div>
+        </div>
 
-// Render Stage Cards
-function renderGrid() {
-const grid = document.getElementById('grid-container');
-grid.innerHTML = '';
+        <!-- Answer Input -->
+        <div class="bg-[#FDFCFB] border border-[#E3E0D8] rounded-2xl p-5 shadow-sm">
+          <label class="block text-xs font-semibold text-[#5C5952] mb-2">
+            你的直覺答案（送出後可修改，直到房主開牌）
+          </label>
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <input id="input-answer" type="text" placeholder="寫下你腦海中的第一個答案..."
+              class="flex-1 px-4 py-2.5 rounded-xl border border-[#D8D4CB] bg-[#FAF9F6] text-sm focus:outline-none focus:border-[#7B8D9E]" />
+            <button onclick="submitAnswer()"
+              class="px-5 py-2.5 rounded-xl bg-[#7B8D9E] hover:bg-[#697B8C] text-white text-sm font-semibold transition">
+              送出感應
+            </button>
+          </div>
+          <p id="answer-feedback" class="text-xs text-[#6F826B] mt-2 hidden">✓ 已傳送至雲端，等待全體開牌！</p>
+        </div>
 
-levelsData.forEach(level => {
-const card = document.createElement('div');
+        <!-- 3D Flip Cards Grid -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-sm font-bold text-[#4A4842]">玩家感應卡片 (<span id="player-count">0</span>)</h4>
+            <span class="text-xs text-[#8E8A80]">每 2 秒自動雲端同步</span>
+          </div>
+          <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+        </div>
+      </section>
+    </div>
 
-if (level.unlocked) {
-// Unlocked Card Styling
-card.className = `
-relative bg-y2k-darkcard/80 border-2 border-y2k-cyan p-4 rounded-xl
-shadow-[0_0_10px_rgba(0,243,255,0.2)] hover:shadow-neon-cyan hover:border-y2k-yellow
-transition-all duration-300 transform hover:-translate-y-1 hover:scale-105
-cursor-pointer flex flex-col justify-between h-36 group backdrop-blur-sm
-`;
+    <!-- Hidden Host Console Button -->
+    <button onclick="toggleHostDrawer()" title="房主控制台"
+      class="fixed bottom-4 right-4 z-30 w-9 h-9 rounded-full bg-[#E6E2D8]/80 hover:bg-[#C28E83] text-[#78756E] hover:text-white border border-[#D4CFC4] flex items-center justify-center text-xs transition opacity-60 hover:opacity-100">
+      ⚙
+    </button>
 
-card.innerHTML = `
-<div class="flex justify-between items-start">
-<span class="font-pixel text-xs text-y2k-yellow bg-black/60 px-2 py-1 rounded border border-y2k-yellow/40">
-W${level.week}
-</span>
-<span class="text-xs bg-y2k-cyan text-black font-pixel px-1.5 py-0.5 rounded font-bold">
-OPEN
-</span>
-</div>
+    <!-- Host Slide-Over Drawer -->
+    <div id="host-drawer" class="fixed inset-0 z-40 hidden">
+      <div onclick="toggleHostDrawer()" class="absolute inset-0 bg-black/25 backdrop-blur-[1px]"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-[#FDFCFB] border-l border-[#E3E0D8] p-6 flex flex-col justify-between shadow-xl">
+        <div class="space-y-5">
+          <div class="flex items-center justify-between border-b border-[#EAE7E0] pb-3">
+            <div>
+              <h3 class="font-bold text-base text-[#37352F]">👑 房主控制台</h3>
+              <p class="text-xs text-[#8E8A80]">房間：<span id="host-room-label">未進入</span></p>
+            </div>
+            <button onclick="toggleHostDrawer()" class="text-sm px-2.5 py-1 rounded-lg bg-[#EAE7E0] text-[#4A4842]">✕</button>
+          </div>
 
-<div class="my-2">
-<h4 class="font-tech text-base text-white font-bold group-hover:text-y2k-cyan transition-colors line-clamp-2">
-${level.title}
-</h4>
-</div>
+          <div>
+            <label class="block text-xs font-semibold text-[#5C5952] mb-1.5">1. 設定新題目（開始新回合）</label>
+            <input id="host-question-input" type="text" placeholder="例如：說到夏天會想到的水果？"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-[#D8D4CB] bg-[#FAF9F6] text-sm mb-2.5 focus:outline-none focus:border-[#8A9A86]" />
+            <button onclick="hostSetQuestion()"
+              class="w-full py-2.5 rounded-xl bg-[#8A9A86] hover:bg-[#778773] text-white text-sm font-semibold transition">
+              發布題目並開始填答
+            </button>
+          </div>
 
-<div class="flex justify-between items-center text-[10px] text-y2k-cyan/80 font-pixel">
-<span>[CLEAR]</span>
-<span class="group-hover:translate-x-1 transition-transform">LAUNCH ▶</span>
-</div>
-`;
+          <div class="pt-2 border-t border-[#EAE7E0] space-y-2.5">
+            <label class="block text-xs font-semibold text-[#5C5952]">2. 回合控制</label>
+            <button onclick="hostRevealCards()"
+              class="w-full py-3 rounded-xl bg-[#C28E83] hover:bg-[#B07B70] text-white text-sm font-bold transition shadow-sm">
+              ✨ 全體同步開牌 (3D 翻牌)
+            </button>
+            <button onclick="hostResetRoom()"
+              class="w-full py-2.5 rounded-xl border border-[#D8D4CB] bg-white hover:bg-[#F3F0EA] text-[#5C5952] text-xs font-semibold transition">
+              重置房間狀態
+            </button>
+          </div>
+        </div>
 
-card.addEventListener('mouseenter', () => playHoverSound());
-card.addEventListener('click', () => {
-playClickSound();
-setTimeout(() => {
-window.location.href = level.url;
-}, 150);
-});
+        <p class="text-[11px] text-[#9B978E] text-center">
+          提示：只有房主需要開啟此面板，一般玩家保持隱藏即可。
+        </p>
+      </div>
+    </div>
+  </div>
 
-} else {
-// Locked Card Styling
-card.className = `
-relative bg-gray-900/40 border border-gray-700/60 p-4 rounded-xl
-opacity-60 hover:opacity-90 transition-all duration-200
-cursor-not-allowed flex flex-col justify-between h-36 backdrop-blur-sm group select-none
-`;
+  <!-- JavaScript Code -->
+  <script>
+    // Audio Context Setup for 8-bit Sound Effects
+    let audioCtx = null;
+    let sfxEnabled = true;
 
-card.innerHTML = `
-<div class="flex justify-between items-start">
-<span class="font-pixel text-xs text-gray-500 bg-black/50 px-2 py-1 rounded">
-W${level.week}
-</span>
-<span class="text-sm">🔒</span>
-</div>
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
 
-<div class="my-2">
-<h4 class="font-tech text-sm text-gray-400 font-medium">
-${level.title}
-</h4>
-</div>
+    function playHoverSound() {
+      if (!sfxEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch (e) {}
+    }
 
-<div class="flex justify-between items-center text-[10px] text-gray-500 font-pixel">
-<span>STATUS: LOCKED</span>
-<span class="text-red-400">DENIED</span>
-</div>
-`;
+    function playClickSound() {
+      if (!sfxEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.2);
+      } catch (e) {}
+    }
 
-// Hover Warning & Shake
-card.addEventListener('mouseenter', () => {
-playLockedSound();
-card.classList.add('animate-shake', 'border-red-500/80');
-setTimeout(() => card.classList.remove('animate-shake', 'border-red-500/80'), 350);
-});
+    function playLockedSound() {
+      if (!sfxEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.25);
+      } catch (e) {}
+    }
 
-// Click Warning
-card.addEventListener('click', (e) => {
-e.preventDefault();
-playLockedSound();
-card.classList.add('animate-shake', 'border-red-500');
-showToast(`SYSTEM LOCKED: W${level.week} ACCESS DENIED`);
-setTimeout(() => card.classList.remove('animate-shake', 'border-red-500'), 350);
-});
-}
+    // Đổi nhân vật Avatar khi click vào khung lục giác
+    const avatarSeeds = ['CyberPlayer2026', 'NeonHacker', 'PixelKnight', 'GlitchCat', 'StarRunner'];
+    let currentAvatarIndex = 0;
 
-grid.appendChild(card);
-});
-}
+    function cycleAvatar() {
+      playClickSound();
+      currentAvatarIndex = (currentAvatarIndex + 1) % avatarSeeds.length;
+      const img = document.getElementById('player-avatar-img');
+      img.src = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${avatarSeeds[currentAvatarIndex]}`;
+      img.classList.remove('object-cover', 'rounded-full');
+      img.classList.add('w-24', 'h-24', 'object-contain');
+    }
 
-// Toggle CRT Scanlines
-document.getElementById('crt-toggle').addEventListener('click', () => {
-document.body.classList.toggle('crt-overlay');
-const crtStatus = document.getElementById('crt-status');
-const isCrt = document.body.classList.contains('crt-overlay');
-crtStatus.innerText = isCrt ? 'CRT: ON' : 'CRT: OFF';
-playClickSound();
-});
+    // Tải ảnh Avatar cá nhân từ máy tính
+    function uploadCustomAvatar(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.getElementById('player-avatar-img');
+        img.src = e.target.result;
+        img.classList.remove('w-24', 'h-24', 'object-contain');
+        img.classList.add('w-full', 'h-full', 'object-cover');
+        playClickSound();
+      };
+      reader.readAsDataURL(file);
+    }
 
-// Toggle Audio Effects
-document.getElementById('audio-toggle').addEventListener('click', () => {
-sfxEnabled = !sfxEnabled;
-const audioStatus = document.getElementById('audio-status');
-audioStatus.innerText = sfxEnabled ? 'SFX: ON' : 'SFX: OFF';
-if (sfxEnabled) playClickSound();
-});
+    // Data for 16 Stages
+    const levelsData = [
+      { week: 1, title: "Week 1 - 數位名片", url: "w1/index.html", unlocked: true },
+      { week: 2, title: "Week 2 - 今天吃甚麼?", url: "w2/index.html", unlocked: true },
+      { week: 3, title: "Week 3 - 課堂作業 3", url: "w3/index.html", unlocked: true },
+      { week: 4, title: "Week 4 - 課堂作業 4", url: "w4/index.html", unlocked: true },
+      { week: 5, title: "Week 5 - 課堂作業 5", url: "w5/index.html", unlocked: true },
+      { week: 6, title: "Week 6 - 課堂作業 6", url: "w6/index.html", unlocked: true },
+      { week: 7, title: "Week 7 - 雲端心電感應 (多人默契遊戲)", url: "#telepathy", unlocked: true, isBuiltinTelepathy: true },
+      { week: 8, title: "Week 8 - 期中專案", url: "w8/index.html", unlocked: true },
+      { week: 9, title: "Week 9 - 課堂作業 9", url: "w9/index.html", unlocked: false },
+      { week: 10, title: "Week 10 - 課堂作業 10", url: "w10/index.html", unlocked: false },
+      { week: 11, title: "Week 11 - 課堂作業 11", url: "w11/index.html", unlocked: false },
+      { week: 12, title: "Week 12 - 課堂作業 12", url: "w12/index.html", unlocked: false },
+      { week: 13, title: "Week 13 - 課堂作業 13", url: "w13/index.html", unlocked: false },
+      { week: 14, title: "Week 14 - 課堂作業 14", url: "w14/index.html", unlocked: false },
+      { week: 15, title: "Week 15 - 課堂作業 15", url: "w15/index.html", unlocked: false },
+      { week: 16, title: "Week 16 - 期末專案", url: "w16/index.html", unlocked: false },
+    ];
 
-// Initialize Page
-window.addEventListener('DOMContentLoaded', () => {
-renderGrid();
-});
-</script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2000);
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('grid-container');
+      grid.innerHTML = '';
+
+      levelsData.forEach(level => {
+        const card = document.createElement('div');
+
+        if (level.unlocked) {
+          const isSpecial = level.isBuiltinTelepathy;
+          card.className = `
+            relative bg-y2k-darkcard/80 border-2 ${isSpecial ? 'border-y2k-pink shadow-neon-pink' : 'border-y2k-cyan shadow-[0_0_10px_rgba(0,243,255,0.2)]'}
+            p-4 rounded-xl hover:shadow-neon-cyan hover:border-y2k-yellow
+            transition-all duration-300 transform hover:-translate-y-1 hover:scale-105
+            cursor-pointer flex flex-col justify-between h-36 group backdrop-blur-sm
+          `;
+
+          card.innerHTML = `
+            <div class="flex justify-between items-start">
+              <span class="font-pixel text-xs text-y2k-yellow bg-black/60 px-2 py-1 rounded border border-y2k-yellow/40">
+                W${level.week}
+              </span>
+              <span class="text-xs ${isSpecial ? 'bg-y2k-pink text-white' : 'bg-y2k-cyan text-black'} font-pixel px-1.5 py-0.5 rounded font-bold">
+                ${isSpecial ? 'CO-OP' : 'OPEN'}
+              </span>
+            </div>
+
+            <div class="my-2">
+              <h4 class="font-tech text-base text-white font-bold group-hover:text-y2k-cyan transition-colors line-clamp-2">
+                ${level.title}
+              </h4>
+            </div>
+
+            <div class="flex justify-between items-center text-[10px] ${isSpecial ? 'text-y2k-pink' : 'text-y2k-cyan/80'} font-pixel">
+              <span>${isSpecial ? '[MULTIPLAYER]' : '[CLEAR]'}</span>
+              <span class="group-hover:translate-x-1 transition-transform">LAUNCH ▶</span>
+            </div>
+          `;
+
+          card.addEventListener('mouseenter', () => playHoverSound());
+          card.addEventListener('click', () => {
+            playClickSound();
+            if (level.isBuiltinTelepathy) {
+              openTelepathyGame();
+            } else {
+              setTimeout(() => {
+                window.location.href = level.url;
+              }, 150);
+            }
+          });
+
+        } else {
+          card.className = `
+            relative bg-gray-900/40 border border-gray-700/60 p-4 rounded-xl
+            opacity-60 hover:opacity-90 transition-all duration-200
+            cursor-not-allowed flex flex-col justify-between h-36 backdrop-blur-sm group select-none
+          `;
+
+          card.innerHTML = `
+            <div class="flex justify-between items-start">
+              <span class="font-pixel text-xs text-gray-500 bg-black/50 px-2 py-1 rounded">
+                W${level.week}
+              </span>
+              <span class="text-sm">🔒</span>
+            </div>
+
+            <div class="my-2">
+              <h4 class="font-tech text-sm text-gray-400 font-medium">
+                ${level.title}
+              </h4>
+            </div>
+
+            <div class="flex justify-between items-center text-[10px] text-gray-500 font-pixel">
+              <span>STATUS: LOCKED</span>
+              <span class="text-red-400">DENIED</span>
+            </div>
+          `;
+
+          card.addEventListener('mouseenter', () => {
+            playLockedSound();
+            card.classList.add('animate-shake', 'border-red-500/80');
+            setTimeout(() => card.classList.remove('animate-shake', 'border-red-500/80'), 350);
+          });
+
+          card.addEventListener('click', (e) => {
+            e.preventDefault();
+            playLockedSound();
+            card.classList.add('animate-shake', 'border-red-500');
+            showToast(`SYSTEM LOCKED: W${level.week} ACCESS DENIED`);
+            setTimeout(() => card.classList.remove('animate-shake', 'border-red-500'), 350);
+          });
+        }
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Toggle CRT Scanlines
+    document.getElementById('crt-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('crt-overlay');
+      const crtStatus = document.getElementById('crt-status');
+      const isCrt = document.body.classList.contains('crt-overlay');
+      crtStatus.innerText = isCrt ? 'CRT: ON' : 'CRT: OFF';
+      playClickSound();
+    });
+
+    // Toggle Audio Effects
+    document.getElementById('audio-toggle').addEventListener('click', () => {
+      sfxEnabled = !sfxEnabled;
+      const audioStatus = document.getElementById('audio-status');
+      audioStatus.innerText = sfxEnabled ? 'SFX: ON' : 'SFX: OFF';
+      if (sfxEnabled) playClickSound();
+    });
+
+    /* ==================== WEEK 7: 雲端心電感應 LOGIC ==================== */
+    const SHEET_NAME = 'TelepathyData';
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzLtCXkbKI1jkRnnN04kiRG01JIwZGgWj4gl8ps1h76juSASAv5-xY8Pz12RcSfpizENA/exec";
+
+    let currentRoom = "";
+    let currentPlayer = "";
+    let pollTimer = null;
+    let isFetching = false;
+    let lastSignature = "";
+
+    function openTelepathyGame() {
+      document.getElementById('hub-view').classList.add('hidden');
+      document.getElementById('telepathy-view').classList.remove('hidden');
+      document.body.classList.remove('crt-overlay');
+    }
+
+    function closeTelepathyGame() {
+      if (pollTimer) clearInterval(pollTimer);
+      document.getElementById('telepathy-view').classList.add('hidden');
+      document.getElementById('hub-view').classList.remove('hidden');
+      if (document.getElementById('crt-status').innerText === 'CRT: ON') {
+        document.body.classList.add('crt-overlay');
+      }
+    }
+
+    function generateRoomCode() {
+      document.getElementById('input-room').value = Math.floor(1000 + Math.random() * 9000).toString();
+    }
+
+    function joinRoom() {
+      const room = document.getElementById('input-room').value.trim();
+      const player = document.getElementById('input-player').value.trim();
+      if (!room || !player) {
+        alert("請輸入房號與玩家名稱！");
+        return;
+      }
+      currentRoom = room;
+      currentPlayer = player;
+
+      document.getElementById('display-room').textContent = currentRoom;
+      document.getElementById('host-room-label').textContent = currentRoom;
+      document.getElementById('nav-room-badge').classList.remove('hidden');
+      document.getElementById('nav-room-badge').classList.add('flex');
+      document.getElementById('login-panel').classList.add('hidden');
+      document.getElementById('game-panel').classList.remove('hidden');
+
+      fetchRoomState();
+      if (pollTimer) clearInterval(pollTimer);
+      pollTimer = setInterval(fetchRoomState, 2000);
+    }
+
+    function copyInviteLink() {
+      const url = `${window.location.origin}${window.location.pathname}?room=${encodeURIComponent(currentRoom)}`;
+      navigator.clipboard.writeText(url).then(() => alert("已複製房間連結：" + url));
+    }
+
+    async function fetchRoomState() {
+      if (!currentRoom || isFetching) return;
+      isFetching = true;
+      try {
+        const res = await fetch(`${GAS_API_URL}?room=${encodeURIComponent(currentRoom)}`);
+        const data = await res.json();
+        renderRoomState(data);
+      } catch (err) {
+        console.error("Polling error:", err);
+      } finally {
+        isFetching = false;
+      }
+    }
+
+    async function postAction(payload) {
+      try {
+        await fetch(GAS_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ room: currentRoom, ...payload })
+        });
+        await fetchRoomState();
+      } catch (err) {
+        console.error("POST error:", err);
+      }
+    }
+
+    function submitAnswer() {
+      const ans = document.getElementById('input-answer').value.trim();
+      if (!ans) return;
+      document.getElementById('answer-feedback').classList.remove('hidden');
+      postAction({ action: "submit_answer", playerName: currentPlayer, answer: ans });
+    }
+
+    function toggleHostDrawer() {
+      document.getElementById('host-drawer').classList.toggle('hidden');
+    }
+
+    function hostSetQuestion() {
+      if (!currentRoom) return alert("請先進入一個房間！");
+      const q = document.getElementById('host-question-input').value.trim();
+      if (!q) return alert("請輸入題目！");
+      document.getElementById('input-answer').value = "";
+      document.getElementById('answer-feedback').classList.add('hidden');
+      postAction({ action: "set_question", question: q });
+      toggleHostDrawer();
+    }
+
+    function hostRevealCards() {
+      if (!currentRoom) return alert("請先進入一個房間！");
+      postAction({ action: "reveal" });
+      toggleHostDrawer();
+    }
+
+    function hostResetRoom() {
+      if (!currentRoom) return alert("請先進入一個房間！");
+      document.getElementById('input-answer').value = "";
+      document.getElementById('answer-feedback').classList.add('hidden');
+      postAction({ action: "reset" });
+      toggleHostDrawer();
+    }
+
+    function renderRoomState(data) {
+      const signature = JSON.stringify(data);
+      if (signature === lastSignature) return;
+      lastSignature = signature;
+
+      const status = data.status || "setup";
+      const question = data.question || "";
+      const answers = data.answers || {};
+
+      const qEl = document.getElementById('question-text');
+      const pill = document.getElementById('status-pill');
+
+      if (status === "setup") {
+        qEl.textContent = "等待房主設定題目...";
+        pill.textContent = "準備中";
+        pill.className = "text-xs px-2.5 py-0.5 rounded-full bg-[#EAE7E0] text-[#5C5952]";
+      } else if (status === "playing") {
+        qEl.textContent = question || "（未命名題目）";
+        pill.textContent = "填答進行中";
+        pill.className = "text-xs px-2.5 py-0.5 rounded-full bg-[#8A9A86]/20 text-[#4E614A] font-semibold";
+      } else if (status === "revealed") {
+        qEl.textContent = question || "（未命名題目）";
+        pill.textContent = "✨ 已全體開牌";
+        pill.className = "text-xs px-2.5 py-0.5 rounded-full bg-[#C28E83]/25 text-[#9A655A] font-semibold";
+      }
+
+      const players = Object.keys(answers);
+      document.getElementById('player-count').textContent = players.length;
+
+      const freq = {};
+      players.forEach(p => {
+        const val = (answers[p] || "").trim().toLowerCase();
+        if (val) freq[val] = (freq[val] || 0) + 1;
+      });
+
+      const grid = document.getElementById('cards-grid');
+      if (players.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-8 text-xs text-[#9B978E] border border-dashed border-[#D8D4CB] rounded-xl">尚無玩家送出答案，快輸入你的直覺吧！</div>`;
+        return;
+      }
+
+      const isRevealed = status === "revealed";
+      grid.innerHTML = players.map((name, idx) => {
+        const ans = answers[name] || "";
+        const isMatched = isRevealed && freq[ans.trim().toLowerCase()] > 1;
+        return `
+          <div class="flip-card ${isRevealed ? 'flipped' : ''}" style="transition-delay:${idx * 80}ms">
+            <div class="flip-inner" style="transition-delay:${idx * 80}ms">
+              <div class="flip-front">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
+                  <span class="px-2 py-0.5 rounded bg-[#8A9A86]/20 text-[#4E614A]">已鎖定</span>
+                </div>
+                <div class="text-center my-auto">
+                  <span class="text-2xl">🃏</span>
+                  <p class="text-[11px] text-[#78756E] mt-1">心電感應蓋牌中</p>
+                </div>
+                <div class="text-[10px] text-[#9B978E] text-right">等待開牌</div>
+              </div>
+              <div class="flip-back ${isMatched ? 'border-[#C28E83] bg-[#FFFDFB]' : ''}">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
+                  ${isMatched
+                    ? '<span class="px-2 py-0.5 rounded-full bg-[#C28E83]/20 text-[#9A655A] font-semibold">✨ 默契一致</span>'
+                    : '<span class="text-[#8E8A80]">已揭曉</span>'}
+                </div>
+                <div class="text-center my-auto px-2">
+                  <p class="text-lg font-bold text-[#37352F] break-words">${escapeHtml(ans)}</p>
+                </div>
+                <div class="text-[10px] text-[#8A9A86] text-right">#${idx + 1}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGrid();
+      const params = new URLSearchParams(window.location.search);
+      const roomParam = params.get('room');
+      if (roomParam) {
+        document.getElementById('input-room').value = roomParam;
+        openTelepathyGame();
+      }
+    });
+  </script>
 </body>
 </html>
