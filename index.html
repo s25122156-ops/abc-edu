@@ -205,6 +205,7 @@
       background: #333;
       border: 1px solid #fff;
       color: var(--neon-green);
+      white-space: nowrap;
     }
 
     /* BOSS 關卡特有視覺樣式 */
@@ -231,9 +232,37 @@
       animation: blink 0.8s infinite alternate;
     }
 
+    /* 多人連線 (CO-OP) 關卡特有視覺樣式 */
+    .stage-card.coop-stage {
+      border-color: var(--neon-purple);
+      background: #160d24;
+      animation: coop-glow 1.8s infinite alternate;
+    }
+
+    .stage-card.coop-stage:hover {
+      border-color: var(--neon-blue);
+      background: #231438;
+      transform: translateX(6px) scale(1.01);
+    }
+
+    .stage-card.coop-stage .stage-num {
+      color: var(--neon-blue);
+    }
+
+    .stage-card.coop-stage .stage-badge {
+      background: #280a45;
+      color: var(--neon-blue);
+      border-color: var(--neon-purple);
+    }
+
     @keyframes boss-glow {
       0% { box-shadow: 0 0 5px rgba(255, 51, 102, 0.4); }
       100% { box-shadow: 0 0 15px rgba(255, 51, 102, 0.9); }
+    }
+
+    @keyframes coop-glow {
+      0% { box-shadow: 0 0 5px rgba(176, 38, 255, 0.4); }
+      100% { box-shadow: 0 0 14px rgba(0, 204, 255, 0.7); }
     }
 
     /* 底部 Arcade 頁腳 */
@@ -323,7 +352,7 @@
           <span class="stage-badge">CLEARED ★</span>
         </a>
 
-        <!-- 關卡 4 (新增 BOSS 關卡) -->
+        <!-- 關卡 4 (BOSS 關卡) -->
         <a href="./w4/index.html" class="stage-card boss-stage" onclick="playSelectSound('boss')">
           <div class="stage-left">
             <span class="stage-num">1-4</span>
@@ -335,13 +364,25 @@
           <span class="stage-badge">UNLOCKED 🔥</span>
         </a>
 
+        <!-- 關卡 5 (新增：雲端心電感應) -->
+        <a href="./w7/index.html" class="stage-card coop-stage" onclick="playSelectSound('coop')">
+          <div class="stage-left">
+            <span class="stage-num">1-5</span>
+            <div class="stage-info">
+              <h3>BONUS STAGE: 雲端心電感應 (多人默契遊戲)</h3>
+              <p>GAS 雲端資料庫同步 / 房號分流與輪詢 / 3D CSS 翻牌特效</p>
+            </div>
+          </div>
+          <span class="stage-badge">MULTIPLAYER ⚡</span>
+        </a>
+
       </div>
     </main>
 
     <!-- 頁腳 -->
     <footer class="pixel-box footer-panel">
       <p>© 2026 PLAYER 1. ALL RIGHTS RESERVED.</p>
-      <p>PRESS [1-4] OR CLICK TO ENTER STAGE</p>
+      <p>PRESS [1-5] OR CLICK TO ENTER STAGE</p>
     </footer>
 
   </div>
@@ -366,6 +407,17 @@
           gain.connect(audioCtx.destination);
           osc.start();
           osc.stop(audioCtx.currentTime + 0.2);
+        } else if (type === 'coop') {
+          // 多人連線關卡三連音跳躍音效
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.06); // E5
+          osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.12); // C6
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
         } else {
           // 一般關卡上升音效
           osc.frequency.setValueAtTime(440, audioCtx.currentTime); // A4
@@ -382,7 +434,7 @@
       }
     }
 
-    // 鍵盤數字鍵快速選關 (1, 2, 3, 4)
+    // 鍵盤數字鍵快速選關 (1 ~ 5)
     document.addEventListener('keydown', (e) => {
       const stages = document.querySelectorAll('.stage-card');
       const keyIndex = parseInt(e.key) - 1;
