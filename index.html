@@ -57,7 +57,7 @@
       background-position: 0 0, 0 12px, 12px -12px, -12px 0;
     }
 
-    /* Hiệu ứng lật thẻ 3D cho Week 7 */
+    /* Hiệu ứng lật thẻ 3D cho Week 5 */
     .flip-card { perspective: 1000px; height: 155px; }
     .flip-inner {
       position: relative;
@@ -133,15 +133,14 @@
     <main class="max-w-6xl w-full mx-auto px-4 md:px-8 py-8 flex-grow">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-        <!-- CỘT TRÁI: THẺ HỒ SƠ & KHUNG AVATAR MỚI (4 cột) -->
+        <!-- CỘT TRÁI: THẺ HỒ SƠ & KHUNG AVATAR (4 cột) -->
         <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-20">
           <div class="bg-white border-2 border-ink rounded-3xl p-6 shadow-hard-lg relative">
-            <!-- Kẹp ghim trang trí trên đỉnh thẻ -->
             <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-ink text-white font-mono text-[10px] tracking-widest px-4 py-1 rounded-full">
               CREATOR PASS #01
             </div>
 
-            <!-- KHUNG AVATAR MỚI: Polaroid / ID Badge nghiêng nhẹ + Nền caro Pastel -->
+            <!-- Khung Avatar Polaroid / ID Badge + Nền caro Pastel -->
             <div class="mt-3 mb-5 mx-auto w-48 bg-paper border-2 border-ink rounded-2xl p-3 shadow-hard transform -rotate-2 hover:rotate-0 transition-transform duration-300">
               <div onclick="cycleAvatar()" title="點擊切換角色造型"
                 class="w-full h-40 rounded-xl border-2 border-ink avatar-gingham-bg relative overflow-hidden flex items-center justify-center cursor-pointer group">
@@ -152,7 +151,7 @@
                   class="w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
                 <span class="absolute top-2 left-2 bg-white/90 border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md">
-                  LV.08
+                  LV.05
                 </span>
                 <label onclick="event.stopPropagation()" title="上傳個人頭像"
                   class="absolute bottom-2 right-2 bg-butter hover:bg-coral border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md cursor-pointer transition-colors">
@@ -172,18 +171,18 @@
               <p class="text-xs font-mono text-zinc-600 mt-1">WEB DESIGN & INTERACTIVE LAB</p>
             </div>
 
-            <!-- Thanh tiến độ học tập -->
+            <!-- Thanh tiến độ học tập: 5 / 16 WEEKS (31%) -->
             <div class="mt-5 bg-paper border-2 border-ink rounded-2xl p-4 space-y-2.5">
               <div class="flex justify-between items-center text-xs font-mono font-bold">
                 <span>課程完成進度</span>
-                <span class="bg-butter px-2 py-0.5 rounded border border-ink">8 / 16 WEEKS</span>
+                <span class="bg-butter px-2 py-0.5 rounded border border-ink">5 / 16 WEEKS</span>
               </div>
               <div class="w-full h-4 bg-white border-2 border-ink rounded-full overflow-hidden p-0.5">
-                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 50%;"></div>
+                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 31.25%;"></div>
               </div>
               <div class="flex justify-between text-[11px] font-mono text-zinc-600">
-                <span>已完成 50%</span>
-                <span>下一關：Week 9</span>
+                <span>已完成 31%</span>
+                <span>下一關：Week 6</span>
               </div>
             </div>
           </div>
@@ -191,7 +190,7 @@
           <!-- Thẻ ghi chú nhanh -->
           <div class="bg-lavender border-2 border-ink rounded-2xl p-4 shadow-hard text-xs leading-relaxed">
             <p class="font-mono font-bold mb-1">📌 操作提示：</p>
-            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 7</strong> 可直接遊玩多人連線默契遊戲。</p>
+            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 可直接遊玩多人連線默契遊戲。</p>
           </div>
         </aside>
 
@@ -209,10 +208,10 @@
                 全部 (16)
               </button>
               <button onclick="setFilter('open')" id="filter-open" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-mint transition">
-                已開放 (8)
+                已開放 (5)
               </button>
               <button onclick="setFilter('locked')" id="filter-locked" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-zinc-200 transition">
-                未解鎖 (8)
+                未解鎖 (11)
               </button>
             </div>
           </div>
@@ -235,7 +234,7 @@
     </footer>
   </div>
 
-  <!-- ==================== GIAO DIỆN 2: WEEK 7 雲端心電感應 ==================== -->
+  <!-- ==================== GIAO DIỆN 2: WEEK 5 雲端心電感應 ==================== -->
   <div id="telepathy-view" class="hidden min-h-screen bg-[#F6F5F2] text-[#37352F] font-sans relative z-40">
     <nav class="sticky top-0 z-20 bg-[#F6F5F2]/90 backdrop-blur border-b border-[#E3E0D8] px-4 py-3">
       <div class="max-w-4xl mx-auto flex items-center justify-between">
@@ -244,7 +243,7 @@
             ← 返回作品集首頁
           </button>
           <span class="text-[#9B978E]">/</span>
-          <span class="font-bold text-[#37352F]">🧠 Week 7 · 雲端心電感應</span>
+          <span class="font-bold text-[#37352F]">🧠 Week 5 · 雲端心電感應</span>
         </div>
         <div id="nav-room-badge" class="hidden items-center gap-2 text-xs">
           <span class="px-2.5 py-1 rounded-full bg-[#8A9A86]/20 text-[#52614E] font-semibold">
@@ -407,7 +406,6 @@
       if (soundOn) playPopSound(660, 0.1);
     }
 
-    // Đồng hồ thời gian thực
     function updateClock() {
       const now = new Date();
       document.getElementById('live-clock').textContent = now.toTimeString().slice(0, 8);
@@ -415,7 +413,6 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Đổi Avatar minh họa (Notionists style)
     const avatarSeeds = ['Felix2026', 'MinaStudio', 'LeoCreator', 'SoraDesign', 'KaiCoder'];
     let avatarIdx = 0;
 
@@ -440,7 +437,7 @@
       reader.readAsDataURL(file);
     }
 
-    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN & BỘ LỌC ==================== */
+    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN (MỞ ĐẾN BÀI 5, KHÓA TỪ BÀI 6) ==================== */
     const cardColors = ['bg-mint', 'bg-butter', 'bg-sky', 'bg-lavender', 'bg-coral'];
 
     const levelsData = [
@@ -448,10 +445,10 @@
       { week: 2, title: "今天吃甚麼?", tag: "JS RANDOM", url: "w2/index.html", unlocked: true },
       { week: 3, title: "課堂作業 3", tag: "LAYOUT", url: "w3/index.html", unlocked: true },
       { week: 4, title: "課堂作業 4", tag: "INTERACTIVE", url: "w4/index.html", unlocked: true },
-      { week: 5, title: "課堂作業 5", tag: "WEB APP", url: "w5/index.html", unlocked: true },
-      { week: 6, title: "課堂作業 6", tag: "API FETCH", url: "w6/index.html", unlocked: true },
-      { week: 7, title: "雲端心電感應 (多人默契遊戲)", tag: "GAS + 3D FLIP", url: "#telepathy", unlocked: true, isTelepathy: true },
-      { week: 8, title: "期中專案", tag: "MIDTERM", url: "w8/index.html", unlocked: true },
+      { week: 5, title: "雲端心電感應 (多人默契遊戲)", tag: "GAS + 3D FLIP", url: "#telepathy", unlocked: true, isTelepathy: true },
+      { week: 6, title: "課堂作業 6", tag: "COMING SOON", url: "w6/index.html", unlocked: false },
+      { week: 7, title: "課堂作業 7", tag: "COMING SOON", url: "w7/index.html", unlocked: false },
+      { week: 8, title: "期中專案", tag: "COMING SOON", url: "w8/index.html", unlocked: false },
       { week: 9, title: "課堂作業 9", tag: "COMING SOON", url: "w9/index.html", unlocked: false },
       { week: 10, title: "課堂作業 10", tag: "COMING SOON", url: "w10/index.html", unlocked: false },
       { week: 11, title: "課堂作業 11", tag: "COMING SOON", url: "w11/index.html", unlocked: false },
@@ -580,7 +577,7 @@
       });
     }
 
-    /* ==================== PHẦN 3: WEEK 7 雲端心電感應 ==================== */
+    /* ==================== PHẦN 3: WEEK 5 雲端心電感應 ==================== */
     const SHEET_NAME = 'TelepathyData';
     const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzLtCXkbKI1jkRnnN04kiRG01JIwZGgWj4gl8ps1h76juSASAv5-xY8Pz12RcSfpizENA/exec";
 
@@ -788,4 +785,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
