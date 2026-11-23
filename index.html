@@ -151,7 +151,7 @@
                   class="w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
                 <span class="absolute top-2 left-2 bg-white/90 border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md">
-                  LV.05
+                  LV.06
                 </span>
                 <label onclick="event.stopPropagation()" title="上傳個人頭像"
                   class="absolute bottom-2 right-2 bg-butter hover:bg-coral border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md cursor-pointer transition-colors">
@@ -171,18 +171,18 @@
               <p class="text-xs font-mono text-zinc-600 mt-1">WEB DESIGN & INTERACTIVE LAB</p>
             </div>
 
-            <!-- Thanh tiến độ học tập: 5 / 16 WEEKS (31%) -->
+            <!-- Thanh tiến độ học tập: 6 / 16 WEEKS (38%) -->
             <div class="mt-5 bg-paper border-2 border-ink rounded-2xl p-4 space-y-2.5">
               <div class="flex justify-between items-center text-xs font-mono font-bold">
                 <span>課程完成進度</span>
-                <span class="bg-butter px-2 py-0.5 rounded border border-ink">5 / 16 WEEKS</span>
+                <span class="bg-butter px-2 py-0.5 rounded border border-ink">6 / 16 WEEKS</span>
               </div>
               <div class="w-full h-4 bg-white border-2 border-ink rounded-full overflow-hidden p-0.5">
-                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 31.25%;"></div>
+                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 37.5%;"></div>
               </div>
               <div class="flex justify-between text-[11px] font-mono text-zinc-600">
-                <span>已完成 31%</span>
-                <span>下一關：Week 6</span>
+                <span>已完成 38%</span>
+                <span>下一關：Week 7</span>
               </div>
             </div>
           </div>
@@ -190,7 +190,7 @@
           <!-- Thẻ ghi chú nhanh -->
           <div class="bg-lavender border-2 border-ink rounded-2xl p-4 shadow-hard text-xs leading-relaxed">
             <p class="font-mono font-bold mb-1">📌 操作提示：</p>
-            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 可直接遊玩多人連線默契遊戲。</p>
+            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 可遊玩多人默契遊戲，點擊 <strong>Week 6</strong> 可開啟像素畫板。</p>
           </div>
         </aside>
 
@@ -208,10 +208,10 @@
                 全部 (16)
               </button>
               <button onclick="setFilter('open')" id="filter-open" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-mint transition">
-                已開放 (5)
+                已開放 (6)
               </button>
               <button onclick="setFilter('locked')" id="filter-locked" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-zinc-200 transition">
-                未解鎖 (11)
+                未解鎖 (10)
               </button>
             </div>
           </div>
@@ -377,6 +377,82 @@
     </div>
   </div>
 
+  <!-- ==================== GIAO DIỆN 3: WEEK 6 像素畫板 (PIXEL ART STUDIO) ==================== -->
+  <div id="pixel-view" class="hidden min-h-screen bg-[#F3EFE6] text-[#18181B] font-sans relative z-40">
+    <nav class="sticky top-0 z-20 bg-white border-b-2 border-ink px-4 py-3">
+      <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-3 text-sm">
+          <button onclick="closePixelStudio()" class="px-3 py-1.5 rounded-lg bg-butter border-2 border-ink shadow-hard-sm hover:bg-coral font-bold text-xs transition">
+            ← 返回作品集首頁
+          </button>
+          <span class="font-mono text-xs font-bold bg-paper px-2.5 py-1 rounded border border-ink">
+            🎨 Week 06 · 像素畫板 PIXEL STUDIO
+          </span>
+        </div>
+        <button onclick="downloadPixelArt()" class="px-3.5 py-1.5 rounded-lg bg-mint border-2 border-ink shadow-hard-sm hover:translate-x-[1px] hover:translate-y-[1px] font-mono text-xs font-bold transition">
+          💾 下載 PNG 作品
+        </button>
+      </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+      <!-- Bảng công cụ bên trái -->
+      <div class="md:col-span-4 bg-white border-2 border-ink rounded-2xl p-5 shadow-hard space-y-5">
+        <div>
+          <h2 class="font-display text-lg font-black">調色盤 & 工具</h2>
+          <p class="text-xs font-mono text-zinc-500">CLICK OR DRAG TO DRAW</p>
+        </div>
+
+        <!-- Chọn màu có sẵn + Color Picker -->
+        <div>
+          <label class="block text-xs font-mono font-bold mb-2">選擇顏色 (COLOR)</label>
+          <div id="pixel-palette" class="grid grid-cols-6 gap-2 mb-3"></div>
+          <div class="flex items-center gap-2">
+            <input type="color" id="pixel-custom-color" value="#18181B" onchange="selectPixelColor(this.value)"
+              class="w-10 h-9 border-2 border-ink rounded-lg cursor-pointer bg-white" />
+            <span id="pixel-color-label" class="font-mono text-xs font-bold bg-paper px-2.5 py-1.5 rounded-lg border border-ink flex-1">
+              #18181B
+            </span>
+          </div>
+        </div>
+
+        <!-- Công cụ -->
+        <div class="grid grid-cols-2 gap-2 font-mono text-xs font-bold">
+          <button id="tool-pen" onclick="setPixelTool('pen')" class="py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition">
+            ✏️ 畫筆 (PEN)
+          </button>
+          <button id="tool-eraser" onclick="setPixelTool('eraser')" class="py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition">
+            🧽 橡皮擦
+          </button>
+        </div>
+
+        <!-- Kích thước lưới & Nút xóa -->
+        <div class="pt-3 border-t-2 border-dashed border-zinc-300 space-y-2.5 font-mono text-xs font-bold">
+          <div class="flex items-center justify-between">
+            <span>畫布尺寸：</span>
+            <select id="pixel-grid-size" onchange="initPixelGrid(Number(this.value))"
+              class="px-2.5 py-1 rounded-lg border-2 border-ink bg-paper">
+              <option value="12">12 × 12</option>
+              <option value="16" selected>16 × 16</option>
+              <option value="24">24 × 24</option>
+            </select>
+          </div>
+          <button onclick="clearPixelGrid()" class="w-full py-2.5 rounded-xl bg-coral border-2 border-ink shadow-hard-sm hover:opacity-90 transition">
+            🗑️ 清空畫布 (CLEAR)
+          </button>
+        </div>
+      </div>
+
+      <!-- Khung vẽ Pixel bên phải -->
+      <div class="md:col-span-8 bg-white border-2 border-ink rounded-2xl p-6 shadow-hard-lg flex flex-col items-center justify-center">
+        <div id="pixel-board"
+          class="w-full max-w-[440px] aspect-square border-2 border-ink bg-white grid select-none touch-none shadow-hard-sm">
+        </div>
+        <p class="mt-4 font-mono text-xs text-zinc-500">💡 提示：按住滑鼠左鍵拖曳即可連續上色！</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ==================== PHẦN 1: ÂM THANH & HỒ SƠ ==================== */
     let audioCtx = null;
@@ -437,7 +513,7 @@
       reader.readAsDataURL(file);
     }
 
-    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN (MỞ ĐẾN BÀI 5, KHÓA TỪ BÀI 6) ==================== */
+    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN (MỞ ĐẾN BÀI 6, KHÓA TỪ BÀI 7) ==================== */
     const cardColors = ['bg-mint', 'bg-butter', 'bg-sky', 'bg-lavender', 'bg-coral'];
 
     const levelsData = [
@@ -446,7 +522,7 @@
       { week: 3, title: "課堂作業 3", tag: "LAYOUT", url: "w3/index.html", unlocked: true },
       { week: 4, title: "課堂作業 4", tag: "INTERACTIVE", url: "w4/index.html", unlocked: true },
       { week: 5, title: "雲端心電感應 (多人默契遊戲)", tag: "GAS + 3D FLIP", url: "#telepathy", unlocked: true, isTelepathy: true },
-      { week: 6, title: "課堂作業 6", tag: "COMING SOON", url: "w6/index.html", unlocked: false },
+      { week: 6, title: "像素畫板 (Pixel Art Studio)", tag: "INTERACTIVE GRID", url: "#pixel", unlocked: true, isPixel: true },
       { week: 7, title: "課堂作業 7", tag: "COMING SOON", url: "w7/index.html", unlocked: false },
       { week: 8, title: "期中專案", tag: "COMING SOON", url: "w8/index.html", unlocked: false },
       { week: 9, title: "課堂作業 9", tag: "COMING SOON", url: "w9/index.html", unlocked: false },
@@ -535,6 +611,8 @@
             playPopSound(680, 0.1);
             if (level.isTelepathy) {
               openTelepathyGame();
+            } else if (level.isPixel) {
+              openPixelStudio();
             } else {
               setTimeout(() => { window.location.href = level.url; }, 140);
             }
@@ -727,60 +805,199 @@
       });
 
       const grid = document.getElementById('cards-grid');
+      grid.innerHTML = '';
+
       if (players.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-8 text-xs text-[#9B978E] border border-dashed border-[#D8D4CB] rounded-xl">尚無玩家送出答案，快輸入你的直覺吧！</div>`;
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-8 text-xs text-[#8E8A80] border border-dashed border-[#D8D4CB] rounded-2xl">
+            目前還沒有玩家送出感應，快輸入答案搶頭香！
+          </div>
+        `;
         return;
       }
 
       const isRevealed = status === "revealed";
-      grid.innerHTML = players.map((name, idx) => {
-        const ans = answers[name] || "";
-        const isMatched = isRevealed && freq[ans.trim().toLowerCase()] > 1;
-        return `
-          <div class="flip-card ${isRevealed ? 'flipped' : ''}" style="transition-delay:${idx * 80}ms">
-            <div class="flip-inner" style="transition-delay:${idx * 80}ms">
-              <div class="flip-front">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
-                  <span class="px-2 py-0.5 rounded bg-[#8A9A86]/20 text-[#4E614A]">已鎖定</span>
-                </div>
-                <div class="text-center my-auto">
-                  <span class="text-2xl">🃏</span>
-                  <p class="text-[11px] text-[#78756E] mt-1">心電感應蓋牌中</p>
-                </div>
-                <div class="text-[10px] text-[#9B978E] text-right">等待開牌</div>
+
+      players.forEach(player => {
+        const rawAns = (answers[player] || "").trim();
+        const normalized = rawAns.toLowerCase();
+        const isMatched = isRevealed && normalized && freq[normalized] > 1;
+        const isMe = player === currentPlayer;
+
+        const card = document.createElement('div');
+        card.className = `flip-card ${isRevealed ? 'flipped' : ''}`;
+
+        card.innerHTML = `
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span>${escapeHtml(player)} ${isMe ? '(你)' : ''}</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#D8D4CB] text-[#4A4842] text-[10px]">
+                  ${rawAns ? '✓ 已感應' : '思考中...'}
+                </span>
               </div>
-              <div class="flip-back ${isMatched ? 'border-[#C28E83] bg-[#FFFDFB]' : ''}">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
-                  ${isMatched
-                    ? '<span class="px-2 py-0.5 rounded-full bg-[#C28E83]/20 text-[#9A655A] font-semibold">✨ 默契一致</span>'
-                    : '<span class="text-[#8E8A80]">已揭曉</span>'}
-                </div>
-                <div class="text-center my-auto px-2">
-                  <p class="text-lg font-bold text-[#37352F] break-words">${escapeHtml(ans)}</p>
-                </div>
-                <div class="text-[10px] text-[#8A9A86] text-right">#${idx + 1}</div>
+              <div class="text-center my-auto">
+                <span class="text-2xl">🔮</span>
+                <p class="text-[11px] mt-1 tracking-wider">等待全體開牌</p>
+              </div>
+              <div class="text-[10px] text-right opacity-60 font-mono">TELEPATHY // CARD</div>
+            </div>
+
+            <div class="flip-back ${isMatched ? '!bg-[#ECFDF5] !border-emerald-700' : ''}">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="text-[#5C5952]">${escapeHtml(player)} ${isMe ? '(你)' : ''}</span>
+                ${isMatched
+                  ? '<span class="px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 text-[10px] font-bold">⚡ 默契成功</span>'
+                  : '<span class="text-[10px] text-[#9B978E]">已揭曉</span>'}
+              </div>
+              <div class="text-center my-auto px-2">
+                <p class="text-lg font-black text-[#18181B] break-words">
+                  ${rawAns ? escapeHtml(rawAns) : '（未作答）'}
+                </p>
+              </div>
+              <div class="text-[10px] text-right text-[#8E8A80] font-mono">
+                ${isMatched ? `共 ${freq[normalized]} 人相同` : 'UNIQUE'}
               </div>
             </div>
           </div>
         `;
-      }).join('');
+
+        grid.appendChild(card);
+      });
     }
 
     function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, m => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      }[m]));
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
 
+    /* ==================== PHẦN 4: WEEK 6 像素畫板 (PIXEL STUDIO) ==================== */
+    const paletteColors = [
+      '#18181B', '#FFFFFF', '#EF4444', '#F97316', '#FACC15', '#22C55E',
+      '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899', '#A7F3D0', '#FDE68A'
+    ];
+    let pixelColor = '#18181B';
+    let pixelTool = 'pen';
+    let pixelSize = 16;
+    let isDrawingPixel = false;
+    let pixelInitialized = false;
+
+    function openPixelStudio() {
+      document.getElementById('hub-view').classList.add('hidden');
+      document.getElementById('pixel-view').classList.remove('hidden');
+      if (!pixelInitialized) {
+        renderPixelPalette();
+        initPixelGrid(16);
+        pixelInitialized = true;
+      }
+    }
+
+    function closePixelStudio() {
+      document.getElementById('pixel-view').classList.add('hidden');
+      document.getElementById('hub-view').classList.remove('hidden');
+    }
+
+    function renderPixelPalette() {
+      const container = document.getElementById('pixel-palette');
+      container.innerHTML = '';
+      paletteColors.forEach(c => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'w-full aspect-square rounded-lg border-2 border-ink shadow-hard-sm hover:scale-105 transition';
+        btn.style.backgroundColor = c;
+        btn.onclick = () => selectPixelColor(c);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectPixelColor(hex) {
+      pixelColor = hex;
+      setPixelTool('pen');
+      document.getElementById('pixel-custom-color').value = hex;
+      document.getElementById('pixel-color-label').textContent = hex.toUpperCase();
+      playPopSound(560, 0.05);
+    }
+
+    function setPixelTool(tool) {
+      pixelTool = tool;
+      const penBtn = document.getElementById('tool-pen');
+      const eraBtn = document.getElementById('tool-eraser');
+      if (tool === 'pen') {
+        penBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition';
+        eraBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition';
+      } else {
+        eraBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition';
+        penBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition';
+      }
+    }
+
+    function paintCell(cell) {
+      cell.style.backgroundColor = pixelTool === 'eraser' ? '#FFFFFF' : pixelColor;
+    }
+
+    function initPixelGrid(size) {
+      pixelSize = size;
+      const board = document.getElementById('pixel-board');
+      board.innerHTML = '';
+      board.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
+
+      for (let i = 0; i < size * size; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'border-[0.5px] border-zinc-200 cursor-crosshair';
+        cell.style.backgroundColor = '#FFFFFF';
+        cell.addEventListener('mousedown', () => {
+          isDrawingPixel = true;
+          paintCell(cell);
+        });
+        cell.addEventListener('mouseenter', () => {
+          if (isDrawingPixel) paintCell(cell);
+        });
+        board.appendChild(cell);
+      }
+    }
+
+    window.addEventListener('mouseup', () => { isDrawingPixel = false; });
+
+    function clearPixelGrid() {
+      playPopSound(300, 0.1);
+      document.querySelectorAll('#pixel-board > div').forEach(c => {
+        c.style.backgroundColor = '#FFFFFF';
+      });
+    }
+
+    function downloadPixelArt() {
+      playPopSound(720, 0.12);
+      const scale = 24;
+      const canvas = document.createElement('canvas');
+      canvas.width = pixelSize * scale;
+      canvas.height = pixelSize * scale;
+      const ctx = canvas.getContext('2d');
+      const cells = document.querySelectorAll('#pixel-board > div');
+
+      cells.forEach((cell, i) => {
+        const x = (i % pixelSize) * scale;
+        const y = Math.floor(i / pixelSize) * scale;
+        ctx.fillStyle = cell.style.backgroundColor || '#FFFFFF';
+        ctx.fillRect(x, y, scale, scale);
+      });
+
+      const link = document.createElement('a');
+      link.download = `week6-pixel-art-${pixelSize}x${pixelSize}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    /* ==================== KHỞI CHẠY TRANG ==================== */
     window.addEventListener('DOMContentLoaded', () => {
       renderGrid();
       const params = new URLSearchParams(window.location.search);
       const roomParam = params.get('room');
       if (roomParam) {
-        document.getElementById('input-room').value = roomParam;
         openTelepathyGame();
+        document.getElementById('input-room').value = roomParam;
       }
     });
   </script>
