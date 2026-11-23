@@ -1,3 +1,18 @@
+未選取任何項目 
+
+移至內容
+透過螢幕閱讀器使用 樹德科技大學 郵件
+in:sent 
+是否啟用 樹德科技大學 郵件 的桌面通知功能？
+   確定  謝謝，不用了
+
+第 1 個，共 13 個
+(無主旨)
+
+范黄玉舒 <s25122156@stu.edu.tw>
+下午2:23 (6 分鐘前)
+寄給 黃薔薇
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -8,7 +23,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <script>
     tailwind.config = {
@@ -97,79 +111,6 @@
       75% { transform: rotate(2deg); }
     }
     .animate-wobble { animation: wobble 0.3s ease-in-out; }
-
-    /* ==================== CSS RIÊNG CHO WEEK 6: 拍照二選一投票器 ==================== */
-    .admin-egg {
-      position: fixed;
-      top: 56px;
-      right: 0;
-      width: 60px;
-      height: 60px;
-      z-index: 45;
-      cursor: pointer;
-      opacity: 0.4;
-    }
-    .admin-egg:hover {
-      opacity: 0.8;
-    }
-    .img-square {
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      width: 100%;
-      border-radius: 1rem;
-      background: #f3f4f6;
-    }
-    .photo-btn {
-      transition: all 0.2s;
-      border: 2px dashed #9ca3af;
-      border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background-color: #f9fafb;
-      aspect-ratio: 1 / 1;
-    }
-    .photo-btn:hover {
-      border-color: #3b82f6;
-      background-color: #eff6ff;
-    }
-    .photo-btn i {
-      font-size: 2.5rem;
-      color: #6b7280;
-      margin-bottom: 0.5rem;
-    }
-    .photo-btn span {
-      color: #6b7280;
-      font-size: 0.875rem;
-    }
-    .vote-card {
-      transition: all 0.2s;
-      border-radius: 1rem;
-      overflow: hidden;
-      cursor: pointer;
-      border: 4px solid transparent;
-    }
-    .vote-card.selected {
-      border-color: #3b82f6;
-      box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
-    }
-    .vote-card:hover {
-      transform: scale(1.02);
-    }
-    .countdown-text {
-      font-variant-numeric: tabular-nums;
-    }
-    .upload-loading {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 1rem;
-    }
   </style>
 </head>
 <body class="min-h-screen font-sans flex flex-col justify-between">
@@ -225,7 +166,7 @@
                   class="w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
                 <span class="absolute top-2 left-2 bg-white/90 border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md">
-                  LV.06
+                  LV.05
                 </span>
                 <label onclick="event.stopPropagation()" title="上傳個人頭像"
                   class="absolute bottom-2 right-2 bg-butter hover:bg-coral border border-ink text-[10px] font-mono font-bold px-2 py-0.5 rounded-md cursor-pointer transition-colors">
@@ -245,18 +186,18 @@
               <p class="text-xs font-mono text-zinc-600 mt-1">WEB DESIGN & INTERACTIVE LAB</p>
             </div>
 
-            <!-- Thanh tiến độ học tập: 6 / 16 WEEKS (38%) -->
+            <!-- Thanh tiến độ học tập: 5 / 16 WEEKS (31%) -->
             <div class="mt-5 bg-paper border-2 border-ink rounded-2xl p-4 space-y-2.5">
               <div class="flex justify-between items-center text-xs font-mono font-bold">
                 <span>課程完成進度</span>
-                <span class="bg-butter px-2 py-0.5 rounded border border-ink">6 / 16 WEEKS</span>
+                <span class="bg-butter px-2 py-0.5 rounded border border-ink">5 / 16 WEEKS</span>
               </div>
               <div class="w-full h-4 bg-white border-2 border-ink rounded-full overflow-hidden p-0.5">
-                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 37.5%;"></div>
+                <div class="h-full bg-coral rounded-full border-r border-ink transition-all duration-700" style="width: 31.25%;"></div>
               </div>
               <div class="flex justify-between text-[11px] font-mono text-zinc-600">
-                <span>已完成 38%</span>
-                <span>下一關：Week 7</span>
+                <span>已完成 31%</span>
+                <span>下一關：Week 6</span>
               </div>
             </div>
           </div>
@@ -264,7 +205,7 @@
           <!-- Thẻ ghi chú nhanh -->
           <div class="bg-lavender border-2 border-ink rounded-2xl p-4 shadow-hard text-xs leading-relaxed">
             <p class="font-mono font-bold mb-1">📌 操作提示：</p>
-            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 遊玩心電感應，點擊 <strong>Week 6</strong> 開啟拍照二選一投票器。</p>
+            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 可直接遊玩多人連線默契遊戲。</p>
           </div>
         </aside>
 
@@ -282,10 +223,10 @@
                 全部 (16)
               </button>
               <button onclick="setFilter('open')" id="filter-open" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-mint transition">
-                已開放 (6)
+                已開放 (5)
               </button>
               <button onclick="setFilter('locked')" id="filter-locked" class="px-3 py-1.5 rounded-lg border-2 border-ink bg-white hover:bg-zinc-200 transition">
-                未解鎖 (10)
+                未解鎖 (11)
               </button>
             </div>
           </div>
@@ -451,136 +392,6 @@
     </div>
   </div>
 
-  <!-- ==================== GIAO DIỆN 3: WEEK 6 拍照二選一投票器 ==================== -->
-  <div id="photo-vote-view" class="hidden min-h-screen bg-gray-100 font-sans antialiased relative z-40 pb-12">
-    <!-- Thanh điều hướng quay lại Portfolio -->
-    <nav class="sticky top-0 z-30 bg-white border-b-2 border-ink px-4 py-3">
-      <div class="max-w-4xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3 text-sm">
-          <button onclick="closePhotoVoteApp()" class="px-3 py-1.5 rounded-lg bg-butter border-2 border-ink shadow-hard-sm hover:bg-coral text-ink font-bold text-xs transition">
-            ← 返回作品集首頁
-          </button>
-          <span class="font-mono text-xs font-bold bg-paper px-2.5 py-1 rounded border border-ink">
-            📸 Week 06 · 拍照二選一投票器
-          </span>
-        </div>
-        <button id="w6-new-poll-btn" onclick="resetToCreateVote()" class="hidden px-3 py-1 rounded-lg bg-mint border border-ink font-mono text-xs font-bold hover:opacity-80 transition">
-          + 建立新投票
-        </button>
-      </div>
-    </nav>
-
-    <!-- 隱藏管理員彩蛋 (右上角) -->
-    <div id="adminEgg" class="admin-egg" title="管理員功能 (彩蛋)"></div>
-
-    <!-- 主容器 -->
-    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-5 mt-6 mx-4 sm:mx-auto">
-      <!-- 標題區 -->
-      <div class="flex justify-between items-center mb-4">
-        <h1 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <i class="fas fa-camera-retro text-blue-500"></i> 拍照二選一
-        </h1>
-        <button id="shareBtn" class="text-gray-500 hover:text-blue-600 transition text-sm px-3 py-1 rounded-full border border-gray-200" title="分享連結">
-          <i class="fas fa-share-alt"></i>
-        </button>
-      </div>
-
-      <!-- 題目輸入 (建立模式) -->
-      <div id="createMode">
-        <div class="mb-3">
-          <label class="block text-sm font-medium text-gray-700 mb-1">投票題目</label>
-          <input type="text" id="pollTitle" placeholder="例如：午餐吃哪間？" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" value="午餐吃哪間？">
-        </div>
-
-        <!-- 兩張照片上傳區 -->
-        <div class="grid grid-cols-2 gap-3 mb-4">
-          <!-- A 選項 -->
-          <div class="relative">
-            <div id="uploadA" class="photo-btn" onclick="triggerFileInput('A')">
-              <i class="fas fa-plus-circle"></i>
-              <span>上傳 A 照片</span>
-            </div>
-            <img id="previewA" class="img-square hidden" src="" alt="選項A">
-            <input type="file" id="fileInputA" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelected('A', event)">
-            <div id="loadingA" class="upload-loading hidden">
-              <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
-            </div>
-          </div>
-          <!-- B 選項 -->
-          <div class="relative">
-            <div id="uploadB" class="photo-btn" onclick="triggerFileInput('B')">
-              <i class="fas fa-plus-circle"></i>
-              <span>上傳 B 照片</span>
-            </div>
-            <img id="previewB" class="img-square hidden" src="" alt="選項B">
-            <input type="file" id="fileInputB" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelected('B', event)">
-            <div id="loadingB" class="upload-loading hidden">
-              <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- 截止時間設定 -->
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700 mb-1">截止時間</label>
-          <input type="datetime-local" id="deadlineInput" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-        </div>
-
-        <!-- 建立投票按鈕 -->
-        <button id="createPollBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition shadow-md disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-          <i class="fas fa-check-circle mr-1"></i> 建立投票
-        </button>
-        <p id="createHint" class="text-xs text-gray-400 mt-2 text-center">請上傳兩張照片並設定截止時間</p>
-      </div>
-
-      <!-- 投票模式 (顯示題目、照片、倒數、投票按鈕) -->
-      <div id="voteMode" class="hidden">
-        <h2 id="displayTitle" class="text-lg font-bold text-gray-800 mb-3"></h2>
-        <div class="grid grid-cols-2 gap-3 mb-4">
-          <div id="voteCardA" class="vote-card" onclick="vote('A')">
-            <img id="voteImgA" class="img-square" src="" alt="選項A">
-          </div>
-          <div id="voteCardB" class="vote-card" onclick="vote('B')">
-            <img id="voteImgB" class="img-square" src="" alt="選項B">
-          </div>
-        </div>
-        <!-- 倒數計時 -->
-        <div class="text-center mb-3">
-          <span class="text-sm text-gray-500">距離截止</span>
-          <div id="countdown" class="countdown-text text-2xl font-bold text-blue-600">--:--:--</div>
-        </div>
-        <!-- 票數顯示 -->
-        <div class="flex justify-between text-sm text-gray-600 mb-2 px-1">
-          <span>A: <span id="votesA" class="font-bold">0</span> 票</span>
-          <span>B: <span id="votesB" class="font-bold">0</span> 票</span>
-        </div>
-        <!-- 投票按鈕 / 已投票提示 -->
-        <div id="voteActionArea">
-          <button id="voteBtnA" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition shadow-md mb-2" onclick="vote('A')">投給 A</button>
-          <button id="voteBtnB" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded-xl transition shadow-md" onclick="vote('B')">投給 B</button>
-        </div>
-        <div id="votedMessage" class="hidden text-center text-green-600 font-medium py-2">
-          <i class="fas fa-check-circle"></i> 您已投票！
-        </div>
-        <div id="endedMessage" class="hidden text-center text-red-500 font-medium py-2">
-          <i class="fas fa-lock"></i> 投票已結束
-        </div>
-      </div>
-    </div>
-
-    <!-- 管理員面板 (預設隱藏，點擊彩蛋顯示) -->
-    <div id="adminPanel" class="admin-panel fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-      <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl">
-        <h3 class="text-lg font-bold mb-4"><i class="fas fa-user-shield text-red-500 mr-2"></i>管理員功能</h3>
-        <p class="text-sm text-gray-600 mb-4">提前結束投票並公布結果？</p>
-        <div class="flex gap-3">
-          <button id="adminCloseBtn" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg transition">取消</button>
-          <button id="adminEndBtn" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition">結束投票</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
     /* ==================== PHẦN 1: ÂM THANH & HỒ SƠ ==================== */
     let audioCtx = null;
@@ -641,7 +452,7 @@
       reader.readAsDataURL(file);
     }
 
-    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN (MỞ ĐẾN BÀI 6, KHÓA TỪ BÀI 7) ==================== */
+    /* ==================== PHẦN 2: DỮ LIỆU 16 TUẦN (MỞ ĐẾN BÀI 5, KHÓA TỪ BÀI 6) ==================== */
     const cardColors = ['bg-mint', 'bg-butter', 'bg-sky', 'bg-lavender', 'bg-coral'];
 
     const levelsData = [
@@ -650,7 +461,7 @@
       { week: 3, title: "課堂作業 3", tag: "LAYOUT", url: "w3/index.html", unlocked: true },
       { week: 4, title: "課堂作業 4", tag: "INTERACTIVE", url: "w4/index.html", unlocked: true },
       { week: 5, title: "雲端心電感應 (多人默契遊戲)", tag: "GAS + 3D FLIP", url: "#telepathy", unlocked: true, isTelepathy: true },
-      { week: 6, title: "拍照二選一投票器", tag: "CAMERA + GAS VOTE", url: "#photovote", unlocked: true, isPhotoVote: true },
+      { week: 6, title: "課堂作業 6", tag: "COMING SOON", url: "w6/index.html", unlocked: false },
       { week: 7, title: "課堂作業 7", tag: "COMING SOON", url: "w7/index.html", unlocked: false },
       { week: 8, title: "期中專案", tag: "COMING SOON", url: "w8/index.html", unlocked: false },
       { week: 9, title: "課堂作業 9", tag: "COMING SOON", url: "w9/index.html", unlocked: false },
@@ -739,8 +550,6 @@
             playPopSound(680, 0.1);
             if (level.isTelepathy) {
               openTelepathyGame();
-            } else if (level.isPhotoVote) {
-              openPhotoVoteApp();
             } else {
               setTimeout(() => { window.location.href = level.url; }, 140);
             }
@@ -933,441 +742,67 @@
       });
 
       const grid = document.getElementById('cards-grid');
-      grid.innerHTML = '';
-
       if (players.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full text-center py-8 text-xs text-[#8E8A80] border border-dashed border-[#D8D4CB] rounded-2xl">
-            目前還沒有玩家送出感應，快輸入答案搶頭香！
-          </div>
-        `;
+        grid.innerHTML = `<div class="col-span-full text-center py-8 text-xs text-[#9B978E] border border-dashed border-[#D8D4CB] rounded-xl">尚無玩家送出答案，快輸入你的直覺吧！</div>`;
         return;
       }
 
       const isRevealed = status === "revealed";
-
-      players.forEach(player => {
-        const rawAns = (answers[player] || "").trim();
-        const normalized = rawAns.toLowerCase();
-        const isMatched = isRevealed && normalized && freq[normalized] > 1;
-        const isMe = player === currentPlayer;
-
-        const card = document.createElement('div');
-        card.className = `flip-card ${isRevealed ? 'flipped' : ''}`;
-
-        card.innerHTML = `
-          <div class="flip-inner">
-            <div class="flip-front">
-              <div class="flex items-center justify-between text-xs font-bold">
-                <span>${escapeHtml(player)} ${isMe ? '(你)' : ''}</span>
-                <span class="px-2 py-0.5 rounded-full bg-[#D8D4CB] text-[#4A4842] text-[10px]">
-                  ${rawAns ? '✓ 已感應' : '思考中...'}
-                </span>
+      grid.innerHTML = players.map((name, idx) => {
+        const ans = answers[name] || "";
+        const isMatched = isRevealed && freq[ans.trim().toLowerCase()] > 1;
+        return `
+          <div class="flip-card ${isRevealed ? 'flipped' : ''}" style="transition-delay:${idx * 80}ms">
+            <div class="flip-inner" style="transition-delay:${idx * 80}ms">
+              <div class="flip-front">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
+                  <span class="px-2 py-0.5 rounded bg-[#8A9A86]/20 text-[#4E614A]">已鎖定</span>
+                </div>
+                <div class="text-center my-auto">
+                  <span class="text-2xl">🃏</span>
+                  <p class="text-[11px] text-[#78756E] mt-1">心電感應蓋牌中</p>
+                </div>
+                <div class="text-[10px] text-[#9B978E] text-right">等待開牌</div>
               </div>
-              <div class="text-center my-auto">
-                <span class="text-2xl">🔮</span>
-                <p class="text-[11px] mt-1 tracking-wider">等待全體開牌</p>
-              </div>
-              <div class="text-[10px] text-right opacity-60 font-mono">TELEPATHY // CARD</div>
-            </div>
-
-            <div class="flip-back ${isMatched ? '!bg-[#ECFDF5] !border-emerald-700' : ''}">
-              <div class="flex items-center justify-between text-xs font-bold">
-                <span class="text-[#5C5952]">${escapeHtml(player)} ${isMe ? '(你)' : ''}</span>
-                ${isMatched
-                  ? '<span class="px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 text-[10px] font-bold">⚡ 默契成功</span>'
-                  : '<span class="text-[10px] text-[#9B978E]">已揭曉</span>'}
-              </div>
-              <div class="text-center my-auto px-2">
-                <p class="text-lg font-black text-[#18181B] break-words">
-                  ${rawAns ? escapeHtml(rawAns) : '（未作答）'}
-                </p>
-              </div>
-              <div class="text-[10px] text-right text-[#8E8A80] font-mono">
-                ${isMatched ? `共 ${freq[normalized]} 人相同` : 'UNIQUE'}
+              <div class="flip-back ${isMatched ? 'border-[#C28E83] bg-[#FFFDFB]' : ''}">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-[#37352F]">${escapeHtml(name)}</span>
+                  ${isMatched
+                    ? '<span class="px-2 py-0.5 rounded-full bg-[#C28E83]/20 text-[#9A655A] font-semibold">✨ 默契一致</span>'
+                    : '<span class="text-[#8E8A80]">已揭曉</span>'}
+                </div>
+                <div class="text-center my-auto px-2">
+                  <p class="text-lg font-bold text-[#37352F] break-words">${escapeHtml(ans)}</p>
+                </div>
+                <div class="text-[10px] text-[#8A9A86] text-right">#${idx + 1}</div>
               </div>
             </div>
           </div>
         `;
-
-        grid.appendChild(card);
-      });
+      }).join('');
     }
 
     function escapeHtml(str) {
-      return str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
     }
 
-    /* ==================== PHẦN 4: WEEK 6 拍照二選一投票器 ==================== */
-    // 請將此處替換為您的 Week 6 GAS Web App 部署 URL
-    const W6_GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxXXXXXXXXXXXXXXXXXXXX/exec';
-
-    let currentPollId = null;
-    let pollData = null;
-    let hasVoted = false;
-    let countdownInterval = null;
-    let imageDataA = null;
-    let imageDataB = null;
-
-    function openPhotoVoteApp() {
-      document.getElementById('hub-view').classList.add('hidden');
-      document.getElementById('photo-vote-view').classList.remove('hidden');
-      setDefaultW6Deadline();
-    }
-
-    function closePhotoVoteApp() {
-      if (countdownInterval) clearInterval(countdownInterval);
-      document.getElementById('photo-vote-view').classList.add('hidden');
-      document.getElementById('hub-view').classList.remove('hidden');
-    }
-
-    function resetToCreateVote() {
-      if (countdownInterval) clearInterval(countdownInterval);
-      currentPollId = null;
-      pollData = null;
-      imageDataA = null;
-      imageDataB = null;
-      document.getElementById('previewA').classList.add('hidden');
-      document.getElementById('uploadA').classList.remove('hidden');
-      document.getElementById('previewB').classList.add('hidden');
-      document.getElementById('uploadB').classList.remove('hidden');
-      document.getElementById('w6-new-poll-btn').classList.add('hidden');
-      setDefaultW6Deadline();
-      updateCreateButtonState();
-      showCreateMode();
-    }
-
-    function setDefaultW6Deadline() {
-      const now = new Date();
-      now.setHours(now.getHours() + 1);
-      const isoLocal = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
-      document.getElementById('deadlineInput').value = isoLocal;
-    }
-
-    function getPollIdFromUrl() {
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGrid();
       const params = new URLSearchParams(window.location.search);
-      return params.get('poll');
-    }
-
-    function showCreateMode() {
-      document.getElementById('createMode').classList.remove('hidden');
-      document.getElementById('voteMode').classList.add('hidden');
-      document.getElementById('createHint').classList.remove('hidden');
-    }
-
-    function showVoteMode(pollId) {
-      document.getElementById('createMode').classList.add('hidden');
-      document.getElementById('voteMode').classList.remove('hidden');
-      document.getElementById('createHint').classList.add('hidden');
-      document.getElementById('w6-new-poll-btn').classList.remove('hidden');
-      fetchPollData(pollId);
-    }
-
-    function triggerFileInput(option) {
-      document.getElementById(`fileInput${option}`).click();
-    }
-
-    async function handleFileSelected(option, event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const loadingEl = document.getElementById(`loading${option}`);
-      const previewEl = document.getElementById(`preview${option}`);
-      const uploadBtn = document.getElementById(`upload${option}`);
-
-      loadingEl.classList.remove('hidden');
-
-      try {
-        const compressedBlob = await compressImage(file, 800);
-        const previewUrl = URL.createObjectURL(compressedBlob);
-
-        previewEl.src = previewUrl;
-        previewEl.classList.remove('hidden');
-        uploadBtn.classList.add('hidden');
-
-        const imageData = {
-          blob: compressedBlob,
-          previewUrl: previewUrl,
-          uploadedUrl: null
-        };
-
-        if (option === 'A') {
-          imageDataA = imageData;
-        } else {
-          imageDataB = imageData;
-        }
-
-        updateCreateButtonState();
-      } catch (error) {
-        console.error('圖片處理錯誤:', error);
-        alert('圖片處理失敗，請重試');
-        previewEl.classList.add('hidden');
-        uploadBtn.classList.remove('hidden');
-      } finally {
-        loadingEl.classList.add('hidden');
+      const roomParam = params.get('room');
+      if (roomParam) {
+        document.getElementById('input-room').value = roomParam;
+        openTelepathyGame();
       }
-    }
+    });
+  </script>
+</body>
+</html>
+撰寫：
+新郵件
+收件者
+主旨
 
-    function compressImage(file, maxSize) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        const url = URL.createObjectURL(file);
-
-        img.onload = () => {
-          URL.revokeObjectURL(url);
-          let { width, height } = img;
-          if (width > maxSize || height > maxSize) {
-            const ratio = Math.min(maxSize / width, maxSize / height);
-            width = Math.floor(width * ratio);
-            height = Math.floor(height * ratio);
-          }
-
-          const canvas = document.createElement('canvas');
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
-
-          canvas.toBlob((blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject(new Error('Canvas toBlob 失敗'));
-            }
-          }, 'image/jpeg', 0.8);
-        };
-
-        img.onerror = () => {
-          URL.revokeObjectURL(url);
-          reject(new Error('圖片載入失敗'));
-        };
-
-        img.src = url;
-      });
-    }
-
-    function updateCreateButtonState() {
-      const btn = document.getElementById('createPollBtn');
-      const title = document.getElementById('pollTitle').value.trim();
-      const deadline = document.getElementById('deadlineInput').value;
-      btn.disabled = !(imageDataA !== null && imageDataB !== null && title && deadline);
-    }
-
-    async function createPoll() {
-      const title = document.getElementById('pollTitle').value.trim();
-      const deadline = document.getElementById('deadlineInput').value;
-
-      if (!title || !deadline) {
-        alert('請填寫題目與截止時間');
-        return;
-      }
-      if (!imageDataA || !imageDataB) {
-        alert('請上傳兩張照片');
-        return;
-      }
-
-      const btn = document.getElementById('createPollBtn');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> 建立中...';
-
-      try {
-        const base64A = await blobToBase64(imageDataA.blob);
-        const base64B = await blobToBase64(imageDataB.blob);
-
-        const payload = {
-          action: 'createPoll',
-          title: title,
-          deadline: deadline,
-          imageA: base64A,
-          imageB: base64B
-        };
-
-        const response = await fetch(W6_GAS_API_URL, {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          window.location.href = `${window.location.pathname}?poll=${result.pollId}`;
-        } else {
-          alert('建立失敗: ' + (result.message || '未知錯誤'));
-          btn.disabled = false;
-          btn.innerHTML = '<i class="fas fa-check-circle mr-1"></i> 建立投票';
-        }
-      } catch (error) {
-        console.error('建立投票錯誤:', error);
-        alert('網路錯誤，請重試（請確認已設定正確的 W6_GAS_API_URL）');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-check-circle mr-1"></i> 建立投票';
-      }
-    }
-
-    function blobToBase64(blob) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      });
-    }
-
-    async function fetchPollData(pollId) {
-      try {
-        const response = await fetch(`${W6_GAS_API_URL}?action=getPoll&pollId=${pollId}`);
-        const data = await response.json();
-
-        if (data.success) {
-          pollData = data.poll;
-          renderVoteMode();
-        } else {
-          alert('找不到投票或載入失敗');
-        }
-      } catch (error) {
-        console.error('取得投票資料錯誤:', error);
-        alert('網路錯誤，請重新整理');
-      }
-    }
-
-    function renderVoteMode() {
-      if (!pollData) return;
-
-      document.getElementById('displayTitle').textContent = pollData.title;
-      document.getElementById('voteImgA').src = pollData.imageA;
-      document.getElementById('voteImgB').src = pollData.imageB;
-      document.getElementById('votesA').textContent = pollData.votesA || 0;
-      document.getElementById('votesB').textContent = pollData.votesB || 0;
-
-      const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
-      hasVoted = votedPolls.includes(currentPollId);
-
-      const now = new Date();
-      const deadline = new Date(pollData.deadline);
-      const isEnded = pollData.status === 'ended' || now > deadline;
-
-      if (isEnded) {
-        document.getElementById('voteActionArea').classList.add('hidden');
-        document.getElementById('votedMessage').classList.add('hidden');
-        document.getElementById('endedMessage').classList.remove('hidden');
-      } else if (hasVoted) {
-        document.getElementById('voteActionArea').classList.add('hidden');
-        document.getElementById('votedMessage').classList.remove('hidden');
-        document.getElementById('endedMessage').classList.add('hidden');
-      } else {
-        document.getElementById('voteActionArea').classList.remove('hidden');
-        document.getElementById('votedMessage').classList.add('hidden');
-        document.getElementById('endedMessage').classList.add('hidden');
-      }
-
-      startCountdown(deadline);
-    }
-
-    function startCountdown(deadline) {
-      if (countdownInterval) clearInterval(countdownInterval);
-
-      const updateCountdown = () => {
-        const now = new Date();
-        const diff = deadline - now;
-
-        if (diff <= 0) {
-          document.getElementById('countdown').textContent = '已截止';
-          if (pollData && pollData.status !== 'ended') {
-            document.getElementById('voteActionArea').classList.add('hidden');
-            document.getElementById('endedMessage').classList.remove('hidden');
-            document.getElementById('votedMessage').classList.add('hidden');
-            pollData.status = 'ended';
-          }
-          clearInterval(countdownInterval);
-        } else {
-          const hours = Math.floor(diff / (1000 * 60 * 60));
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-          document.getElementById('countdown').textContent =
-            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-      };
-
-      updateCountdown();
-      countdownInterval = setInterval(updateCountdown, 1000);
-    }
-
-    function vote(option) {
-      if (hasVoted) {
-        alert('您已經投過票了！');
-        return;
-      }
-
-      const deadline = new Date(pollData.deadline);
-      if (new Date() > deadline || pollData.status === 'ended') {
-        alert('投票已截止');
-        return;
-      }
-
-      submitVote(option);
-    }
-
-    async function submitVote(option) {
-      try {
-        const response = await fetch(W6_GAS_API_URL, {
-          method: 'POST',
-          body: JSON.stringify({
-            action: 'vote',
-            pollId: currentPollId,
-            option: option
-          }),
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          hasVoted = true;
-          const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
-          if (!votedPolls.includes(currentPollId)) {
-            votedPolls.push(currentPollId);
-            localStorage.setItem('votedPolls', JSON.stringify(votedPolls));
-          }
-
-          document.getElementById('votesA').textContent = result.votesA;
-          document.getElementById('votesB').textContent = result.votesB;
-          document.getElementById('voteActionArea').classList.add('hidden');
-          document.getElementById('votedMessage').classList.remove('hidden');
-
-          if (option === 'A') {
-            document.getElementById('voteCardA').classList.add('selected');
-          } else {
-            document.getElementById('voteCardB').classList.add('selected');
-          }
-        } else {
-          alert('投票失敗: ' + (result.message || '未知錯誤'));
-        }
-      } catch (error) {
-        console.error('投票錯誤:', error);
-        alert('網路錯誤，請重試');
-      }
-    }
-
-    async function endPollEarly() {
-      if (!currentPollId || !pollData) return;
-      if (!confirm('確定要提前結束投票並公布結果嗎？')) return;
-
-      try {
-        const response = await fetch(W6_GAS_API_URL, {
-          method: 'POST',
-          body: JSON.stringify({
-            action: 'endPoll',
-            pollId: currentPollId
-          }),
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          pollData.status = 'ended';
