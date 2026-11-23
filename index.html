@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <script>
     tailwind.config = {
@@ -96,6 +97,79 @@
       75% { transform: rotate(2deg); }
     }
     .animate-wobble { animation: wobble 0.3s ease-in-out; }
+
+    /* ==================== CSS RIÊNG CHO WEEK 6: 拍照二選一投票器 ==================== */
+    .admin-egg {
+      position: fixed;
+      top: 56px;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      z-index: 45;
+      cursor: pointer;
+      opacity: 0.4;
+    }
+    .admin-egg:hover {
+      opacity: 0.8;
+    }
+    .img-square {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 1rem;
+      background: #f3f4f6;
+    }
+    .photo-btn {
+      transition: all 0.2s;
+      border: 2px dashed #9ca3af;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #f9fafb;
+      aspect-ratio: 1 / 1;
+    }
+    .photo-btn:hover {
+      border-color: #3b82f6;
+      background-color: #eff6ff;
+    }
+    .photo-btn i {
+      font-size: 2.5rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .photo-btn span {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    .vote-card {
+      transition: all 0.2s;
+      border-radius: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      border: 4px solid transparent;
+    }
+    .vote-card.selected {
+      border-color: #3b82f6;
+      box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+    }
+    .vote-card:hover {
+      transform: scale(1.02);
+    }
+    .countdown-text {
+      font-variant-numeric: tabular-nums;
+    }
+    .upload-loading {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+    }
   </style>
 </head>
 <body class="min-h-screen font-sans flex flex-col justify-between">
@@ -190,7 +264,7 @@
           <!-- Thẻ ghi chú nhanh -->
           <div class="bg-lavender border-2 border-ink rounded-2xl p-4 shadow-hard text-xs leading-relaxed">
             <p class="font-mono font-bold mb-1">📌 操作提示：</p>
-            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 可遊玩多人默契遊戲，點擊 <strong>Week 6</strong> 可開啟像素畫板。</p>
+            <p>點擊頭像可隨機切換插畫角色，或點「換照片」上傳自己的圖片；點擊 <strong>Week 5</strong> 遊玩心電感應，點擊 <strong>Week 6</strong> 開啟拍照二選一投票器。</p>
           </div>
         </aside>
 
@@ -377,78 +451,132 @@
     </div>
   </div>
 
-  <!-- ==================== GIAO DIỆN 3: WEEK 6 像素畫板 (PIXEL ART STUDIO) ==================== -->
-  <div id="pixel-view" class="hidden min-h-screen bg-[#F3EFE6] text-[#18181B] font-sans relative z-40">
-    <nav class="sticky top-0 z-20 bg-white border-b-2 border-ink px-4 py-3">
-      <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
+  <!-- ==================== GIAO DIỆN 3: WEEK 6 拍照二選一投票器 ==================== -->
+  <div id="photo-vote-view" class="hidden min-h-screen bg-gray-100 font-sans antialiased relative z-40 pb-12">
+    <!-- Thanh điều hướng quay lại Portfolio -->
+    <nav class="sticky top-0 z-30 bg-white border-b-2 border-ink px-4 py-3">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
         <div class="flex items-center gap-3 text-sm">
-          <button onclick="closePixelStudio()" class="px-3 py-1.5 rounded-lg bg-butter border-2 border-ink shadow-hard-sm hover:bg-coral font-bold text-xs transition">
+          <button onclick="closePhotoVoteApp()" class="px-3 py-1.5 rounded-lg bg-butter border-2 border-ink shadow-hard-sm hover:bg-coral text-ink font-bold text-xs transition">
             ← 返回作品集首頁
           </button>
           <span class="font-mono text-xs font-bold bg-paper px-2.5 py-1 rounded border border-ink">
-            🎨 Week 06 · 像素畫板 PIXEL STUDIO
+            📸 Week 06 · 拍照二選一投票器
           </span>
         </div>
-        <button onclick="downloadPixelArt()" class="px-3.5 py-1.5 rounded-lg bg-mint border-2 border-ink shadow-hard-sm hover:translate-x-[1px] hover:translate-y-[1px] font-mono text-xs font-bold transition">
-          💾 下載 PNG 作品
+        <button id="w6-new-poll-btn" onclick="resetToCreateVote()" class="hidden px-3 py-1 rounded-lg bg-mint border border-ink font-mono text-xs font-bold hover:opacity-80 transition">
+          + 建立新投票
         </button>
       </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-      <!-- Bảng công cụ bên trái -->
-      <div class="md:col-span-4 bg-white border-2 border-ink rounded-2xl p-5 shadow-hard space-y-5">
-        <div>
-          <h2 class="font-display text-lg font-black">調色盤 & 工具</h2>
-          <p class="text-xs font-mono text-zinc-500">CLICK OR DRAG TO DRAW</p>
-        </div>
+    <!-- 隱藏管理員彩蛋 (右上角) -->
+    <div id="adminEgg" class="admin-egg" title="管理員功能 (彩蛋)"></div>
 
-        <!-- Chọn màu có sẵn + Color Picker -->
-        <div>
-          <label class="block text-xs font-mono font-bold mb-2">選擇顏色 (COLOR)</label>
-          <div id="pixel-palette" class="grid grid-cols-6 gap-2 mb-3"></div>
-          <div class="flex items-center gap-2">
-            <input type="color" id="pixel-custom-color" value="#18181B" onchange="selectPixelColor(this.value)"
-              class="w-10 h-9 border-2 border-ink rounded-lg cursor-pointer bg-white" />
-            <span id="pixel-color-label" class="font-mono text-xs font-bold bg-paper px-2.5 py-1.5 rounded-lg border border-ink flex-1">
-              #18181B
-            </span>
-          </div>
-        </div>
-
-        <!-- Công cụ -->
-        <div class="grid grid-cols-2 gap-2 font-mono text-xs font-bold">
-          <button id="tool-pen" onclick="setPixelTool('pen')" class="py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition">
-            ✏️ 畫筆 (PEN)
-          </button>
-          <button id="tool-eraser" onclick="setPixelTool('eraser')" class="py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition">
-            🧽 橡皮擦
-          </button>
-        </div>
-
-        <!-- Kích thước lưới & Nút xóa -->
-        <div class="pt-3 border-t-2 border-dashed border-zinc-300 space-y-2.5 font-mono text-xs font-bold">
-          <div class="flex items-center justify-between">
-            <span>畫布尺寸：</span>
-            <select id="pixel-grid-size" onchange="initPixelGrid(Number(this.value))"
-              class="px-2.5 py-1 rounded-lg border-2 border-ink bg-paper">
-              <option value="12">12 × 12</option>
-              <option value="16" selected>16 × 16</option>
-              <option value="24">24 × 24</option>
-            </select>
-          </div>
-          <button onclick="clearPixelGrid()" class="w-full py-2.5 rounded-xl bg-coral border-2 border-ink shadow-hard-sm hover:opacity-90 transition">
-            🗑️ 清空畫布 (CLEAR)
-          </button>
-        </div>
+    <!-- 主容器 -->
+    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-5 mt-6 mx-4 sm:mx-auto">
+      <!-- 標題區 -->
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+          <i class="fas fa-camera-retro text-blue-500"></i> 拍照二選一
+        </h1>
+        <button id="shareBtn" class="text-gray-500 hover:text-blue-600 transition text-sm px-3 py-1 rounded-full border border-gray-200" title="分享連結">
+          <i class="fas fa-share-alt"></i>
+        </button>
       </div>
 
-      <!-- Khung vẽ Pixel bên phải -->
-      <div class="md:col-span-8 bg-white border-2 border-ink rounded-2xl p-6 shadow-hard-lg flex flex-col items-center justify-center">
-        <div id="pixel-board"
-          class="w-full max-w-[440px] aspect-square border-2 border-ink bg-white grid select-none touch-none shadow-hard-sm">
+      <!-- 題目輸入 (建立模式) -->
+      <div id="createMode">
+        <div class="mb-3">
+          <label class="block text-sm font-medium text-gray-700 mb-1">投票題目</label>
+          <input type="text" id="pollTitle" placeholder="例如：午餐吃哪間？" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" value="午餐吃哪間？">
         </div>
-        <p class="mt-4 font-mono text-xs text-zinc-500">💡 提示：按住滑鼠左鍵拖曳即可連續上色！</p>
+
+        <!-- 兩張照片上傳區 -->
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <!-- A 選項 -->
+          <div class="relative">
+            <div id="uploadA" class="photo-btn" onclick="triggerFileInput('A')">
+              <i class="fas fa-plus-circle"></i>
+              <span>上傳 A 照片</span>
+            </div>
+            <img id="previewA" class="img-square hidden" src="" alt="選項A">
+            <input type="file" id="fileInputA" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelected('A', event)">
+            <div id="loadingA" class="upload-loading hidden">
+              <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
+            </div>
+          </div>
+          <!-- B 選項 -->
+          <div class="relative">
+            <div id="uploadB" class="photo-btn" onclick="triggerFileInput('B')">
+              <i class="fas fa-plus-circle"></i>
+              <span>上傳 B 照片</span>
+            </div>
+            <img id="previewB" class="img-square hidden" src="" alt="選項B">
+            <input type="file" id="fileInputB" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelected('B', event)">
+            <div id="loadingB" class="upload-loading hidden">
+              <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 截止時間設定 -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">截止時間</label>
+          <input type="datetime-local" id="deadlineInput" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+
+        <!-- 建立投票按鈕 -->
+        <button id="createPollBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition shadow-md disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          <i class="fas fa-check-circle mr-1"></i> 建立投票
+        </button>
+        <p id="createHint" class="text-xs text-gray-400 mt-2 text-center">請上傳兩張照片並設定截止時間</p>
+      </div>
+
+      <!-- 投票模式 (顯示題目、照片、倒數、投票按鈕) -->
+      <div id="voteMode" class="hidden">
+        <h2 id="displayTitle" class="text-lg font-bold text-gray-800 mb-3"></h2>
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <div id="voteCardA" class="vote-card" onclick="vote('A')">
+            <img id="voteImgA" class="img-square" src="" alt="選項A">
+          </div>
+          <div id="voteCardB" class="vote-card" onclick="vote('B')">
+            <img id="voteImgB" class="img-square" src="" alt="選項B">
+          </div>
+        </div>
+        <!-- 倒數計時 -->
+        <div class="text-center mb-3">
+          <span class="text-sm text-gray-500">距離截止</span>
+          <div id="countdown" class="countdown-text text-2xl font-bold text-blue-600">--:--:--</div>
+        </div>
+        <!-- 票數顯示 -->
+        <div class="flex justify-between text-sm text-gray-600 mb-2 px-1">
+          <span>A: <span id="votesA" class="font-bold">0</span> 票</span>
+          <span>B: <span id="votesB" class="font-bold">0</span> 票</span>
+        </div>
+        <!-- 投票按鈕 / 已投票提示 -->
+        <div id="voteActionArea">
+          <button id="voteBtnA" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition shadow-md mb-2" onclick="vote('A')">投給 A</button>
+          <button id="voteBtnB" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded-xl transition shadow-md" onclick="vote('B')">投給 B</button>
+        </div>
+        <div id="votedMessage" class="hidden text-center text-green-600 font-medium py-2">
+          <i class="fas fa-check-circle"></i> 您已投票！
+        </div>
+        <div id="endedMessage" class="hidden text-center text-red-500 font-medium py-2">
+          <i class="fas fa-lock"></i> 投票已結束
+        </div>
+      </div>
+    </div>
+
+    <!-- 管理員面板 (預設隱藏，點擊彩蛋顯示) -->
+    <div id="adminPanel" class="admin-panel fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+      <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl">
+        <h3 class="text-lg font-bold mb-4"><i class="fas fa-user-shield text-red-500 mr-2"></i>管理員功能</h3>
+        <p class="text-sm text-gray-600 mb-4">提前結束投票並公布結果？</p>
+        <div class="flex gap-3">
+          <button id="adminCloseBtn" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg transition">取消</button>
+          <button id="adminEndBtn" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition">結束投票</button>
+        </div>
       </div>
     </div>
   </div>
@@ -522,7 +650,7 @@
       { week: 3, title: "課堂作業 3", tag: "LAYOUT", url: "w3/index.html", unlocked: true },
       { week: 4, title: "課堂作業 4", tag: "INTERACTIVE", url: "w4/index.html", unlocked: true },
       { week: 5, title: "雲端心電感應 (多人默契遊戲)", tag: "GAS + 3D FLIP", url: "#telepathy", unlocked: true, isTelepathy: true },
-      { week: 6, title: "像素畫板 (Pixel Art Studio)", tag: "INTERACTIVE GRID", url: "#pixel", unlocked: true, isPixel: true },
+      { week: 6, title: "拍照二選一投票器", tag: "CAMERA + GAS VOTE", url: "#photovote", unlocked: true, isPhotoVote: true },
       { week: 7, title: "課堂作業 7", tag: "COMING SOON", url: "w7/index.html", unlocked: false },
       { week: 8, title: "期中專案", tag: "COMING SOON", url: "w8/index.html", unlocked: false },
       { week: 9, title: "課堂作業 9", tag: "COMING SOON", url: "w9/index.html", unlocked: false },
@@ -611,8 +739,8 @@
             playPopSound(680, 0.1);
             if (level.isTelepathy) {
               openTelepathyGame();
-            } else if (level.isPixel) {
-              openPixelStudio();
+            } else if (level.isPhotoVote) {
+              openPhotoVoteApp();
             } else {
               setTimeout(() => { window.location.href = level.url; }, 140);
             }
@@ -874,132 +1002,372 @@
         .replace(/"/g, "&quot;");
     }
 
-    /* ==================== PHẦN 4: WEEK 6 像素畫板 (PIXEL STUDIO) ==================== */
-    const paletteColors = [
-      '#18181B', '#FFFFFF', '#EF4444', '#F97316', '#FACC15', '#22C55E',
-      '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899', '#A7F3D0', '#FDE68A'
-    ];
-    let pixelColor = '#18181B';
-    let pixelTool = 'pen';
-    let pixelSize = 16;
-    let isDrawingPixel = false;
-    let pixelInitialized = false;
+    /* ==================== PHẦN 4: WEEK 6 拍照二選一投票器 ==================== */
+    // 請將此處替換為您的 Week 6 GAS Web App 部署 URL
+    const W6_GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxXXXXXXXXXXXXXXXXXXXX/exec';
 
-    function openPixelStudio() {
+    let currentPollId = null;
+    let pollData = null;
+    let hasVoted = false;
+    let countdownInterval = null;
+    let imageDataA = null;
+    let imageDataB = null;
+
+    function openPhotoVoteApp() {
       document.getElementById('hub-view').classList.add('hidden');
-      document.getElementById('pixel-view').classList.remove('hidden');
-      if (!pixelInitialized) {
-        renderPixelPalette();
-        initPixelGrid(16);
-        pixelInitialized = true;
-      }
+      document.getElementById('photo-vote-view').classList.remove('hidden');
+      setDefaultW6Deadline();
     }
 
-    function closePixelStudio() {
-      document.getElementById('pixel-view').classList.add('hidden');
+    function closePhotoVoteApp() {
+      if (countdownInterval) clearInterval(countdownInterval);
+      document.getElementById('photo-vote-view').classList.add('hidden');
       document.getElementById('hub-view').classList.remove('hidden');
     }
 
-    function renderPixelPalette() {
-      const container = document.getElementById('pixel-palette');
-      container.innerHTML = '';
-      paletteColors.forEach(c => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'w-full aspect-square rounded-lg border-2 border-ink shadow-hard-sm hover:scale-105 transition';
-        btn.style.backgroundColor = c;
-        btn.onclick = () => selectPixelColor(c);
-        container.appendChild(btn);
-      });
+    function resetToCreateVote() {
+      if (countdownInterval) clearInterval(countdownInterval);
+      currentPollId = null;
+      pollData = null;
+      imageDataA = null;
+      imageDataB = null;
+      document.getElementById('previewA').classList.add('hidden');
+      document.getElementById('uploadA').classList.remove('hidden');
+      document.getElementById('previewB').classList.add('hidden');
+      document.getElementById('uploadB').classList.remove('hidden');
+      document.getElementById('w6-new-poll-btn').classList.add('hidden');
+      setDefaultW6Deadline();
+      updateCreateButtonState();
+      showCreateMode();
     }
 
-    function selectPixelColor(hex) {
-      pixelColor = hex;
-      setPixelTool('pen');
-      document.getElementById('pixel-custom-color').value = hex;
-      document.getElementById('pixel-color-label').textContent = hex.toUpperCase();
-      playPopSound(560, 0.05);
+    function setDefaultW6Deadline() {
+      const now = new Date();
+      now.setHours(now.getHours() + 1);
+      const isoLocal = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      document.getElementById('deadlineInput').value = isoLocal;
     }
 
-    function setPixelTool(tool) {
-      pixelTool = tool;
-      const penBtn = document.getElementById('tool-pen');
-      const eraBtn = document.getElementById('tool-eraser');
-      if (tool === 'pen') {
-        penBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition';
-        eraBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition';
-      } else {
-        eraBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-ink text-white transition';
-        penBtn.className = 'py-2.5 rounded-xl border-2 border-ink bg-white hover:bg-butter transition';
-      }
-    }
-
-    function paintCell(cell) {
-      cell.style.backgroundColor = pixelTool === 'eraser' ? '#FFFFFF' : pixelColor;
-    }
-
-    function initPixelGrid(size) {
-      pixelSize = size;
-      const board = document.getElementById('pixel-board');
-      board.innerHTML = '';
-      board.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
-
-      for (let i = 0; i < size * size; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'border-[0.5px] border-zinc-200 cursor-crosshair';
-        cell.style.backgroundColor = '#FFFFFF';
-        cell.addEventListener('mousedown', () => {
-          isDrawingPixel = true;
-          paintCell(cell);
-        });
-        cell.addEventListener('mouseenter', () => {
-          if (isDrawingPixel) paintCell(cell);
-        });
-        board.appendChild(cell);
-      }
-    }
-
-    window.addEventListener('mouseup', () => { isDrawingPixel = false; });
-
-    function clearPixelGrid() {
-      playPopSound(300, 0.1);
-      document.querySelectorAll('#pixel-board > div').forEach(c => {
-        c.style.backgroundColor = '#FFFFFF';
-      });
-    }
-
-    function downloadPixelArt() {
-      playPopSound(720, 0.12);
-      const scale = 24;
-      const canvas = document.createElement('canvas');
-      canvas.width = pixelSize * scale;
-      canvas.height = pixelSize * scale;
-      const ctx = canvas.getContext('2d');
-      const cells = document.querySelectorAll('#pixel-board > div');
-
-      cells.forEach((cell, i) => {
-        const x = (i % pixelSize) * scale;
-        const y = Math.floor(i / pixelSize) * scale;
-        ctx.fillStyle = cell.style.backgroundColor || '#FFFFFF';
-        ctx.fillRect(x, y, scale, scale);
-      });
-
-      const link = document.createElement('a');
-      link.download = `week6-pixel-art-${pixelSize}x${pixelSize}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    }
-
-    /* ==================== KHỞI CHẠY TRANG ==================== */
-    window.addEventListener('DOMContentLoaded', () => {
-      renderGrid();
+    function getPollIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      const roomParam = params.get('room');
-      if (roomParam) {
-        openTelepathyGame();
-        document.getElementById('input-room').value = roomParam;
+      return params.get('poll');
+    }
+
+    function showCreateMode() {
+      document.getElementById('createMode').classList.remove('hidden');
+      document.getElementById('voteMode').classList.add('hidden');
+      document.getElementById('createHint').classList.remove('hidden');
+    }
+
+    function showVoteMode(pollId) {
+      document.getElementById('createMode').classList.add('hidden');
+      document.getElementById('voteMode').classList.remove('hidden');
+      document.getElementById('createHint').classList.add('hidden');
+      document.getElementById('w6-new-poll-btn').classList.remove('hidden');
+      fetchPollData(pollId);
+    }
+
+    function triggerFileInput(option) {
+      document.getElementById(`fileInput${option}`).click();
+    }
+
+    async function handleFileSelected(option, event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const loadingEl = document.getElementById(`loading${option}`);
+      const previewEl = document.getElementById(`preview${option}`);
+      const uploadBtn = document.getElementById(`upload${option}`);
+
+      loadingEl.classList.remove('hidden');
+
+      try {
+        const compressedBlob = await compressImage(file, 800);
+        const previewUrl = URL.createObjectURL(compressedBlob);
+
+        previewEl.src = previewUrl;
+        previewEl.classList.remove('hidden');
+        uploadBtn.classList.add('hidden');
+
+        const imageData = {
+          blob: compressedBlob,
+          previewUrl: previewUrl,
+          uploadedUrl: null
+        };
+
+        if (option === 'A') {
+          imageDataA = imageData;
+        } else {
+          imageDataB = imageData;
+        }
+
+        updateCreateButtonState();
+      } catch (error) {
+        console.error('圖片處理錯誤:', error);
+        alert('圖片處理失敗，請重試');
+        previewEl.classList.add('hidden');
+        uploadBtn.classList.remove('hidden');
+      } finally {
+        loadingEl.classList.add('hidden');
       }
-    });
-  </script>
-</body>
-</html>
+    }
+
+    function compressImage(file, maxSize) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          let { width, height } = img;
+          if (width > maxSize || height > maxSize) {
+            const ratio = Math.min(maxSize / width, maxSize / height);
+            width = Math.floor(width * ratio);
+            height = Math.floor(height * ratio);
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Canvas toBlob 失敗'));
+            }
+          }, 'image/jpeg', 0.8);
+        };
+
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('圖片載入失敗'));
+        };
+
+        img.src = url;
+      });
+    }
+
+    function updateCreateButtonState() {
+      const btn = document.getElementById('createPollBtn');
+      const title = document.getElementById('pollTitle').value.trim();
+      const deadline = document.getElementById('deadlineInput').value;
+      btn.disabled = !(imageDataA !== null && imageDataB !== null && title && deadline);
+    }
+
+    async function createPoll() {
+      const title = document.getElementById('pollTitle').value.trim();
+      const deadline = document.getElementById('deadlineInput').value;
+
+      if (!title || !deadline) {
+        alert('請填寫題目與截止時間');
+        return;
+      }
+      if (!imageDataA || !imageDataB) {
+        alert('請上傳兩張照片');
+        return;
+      }
+
+      const btn = document.getElementById('createPollBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> 建立中...';
+
+      try {
+        const base64A = await blobToBase64(imageDataA.blob);
+        const base64B = await blobToBase64(imageDataB.blob);
+
+        const payload = {
+          action: 'createPoll',
+          title: title,
+          deadline: deadline,
+          imageA: base64A,
+          imageB: base64B
+        };
+
+        const response = await fetch(W6_GAS_API_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          window.location.href = `${window.location.pathname}?poll=${result.pollId}`;
+        } else {
+          alert('建立失敗: ' + (result.message || '未知錯誤'));
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-check-circle mr-1"></i> 建立投票';
+        }
+      } catch (error) {
+        console.error('建立投票錯誤:', error);
+        alert('網路錯誤，請重試（請確認已設定正確的 W6_GAS_API_URL）');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check-circle mr-1"></i> 建立投票';
+      }
+    }
+
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    async function fetchPollData(pollId) {
+      try {
+        const response = await fetch(`${W6_GAS_API_URL}?action=getPoll&pollId=${pollId}`);
+        const data = await response.json();
+
+        if (data.success) {
+          pollData = data.poll;
+          renderVoteMode();
+        } else {
+          alert('找不到投票或載入失敗');
+        }
+      } catch (error) {
+        console.error('取得投票資料錯誤:', error);
+        alert('網路錯誤，請重新整理');
+      }
+    }
+
+    function renderVoteMode() {
+      if (!pollData) return;
+
+      document.getElementById('displayTitle').textContent = pollData.title;
+      document.getElementById('voteImgA').src = pollData.imageA;
+      document.getElementById('voteImgB').src = pollData.imageB;
+      document.getElementById('votesA').textContent = pollData.votesA || 0;
+      document.getElementById('votesB').textContent = pollData.votesB || 0;
+
+      const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
+      hasVoted = votedPolls.includes(currentPollId);
+
+      const now = new Date();
+      const deadline = new Date(pollData.deadline);
+      const isEnded = pollData.status === 'ended' || now > deadline;
+
+      if (isEnded) {
+        document.getElementById('voteActionArea').classList.add('hidden');
+        document.getElementById('votedMessage').classList.add('hidden');
+        document.getElementById('endedMessage').classList.remove('hidden');
+      } else if (hasVoted) {
+        document.getElementById('voteActionArea').classList.add('hidden');
+        document.getElementById('votedMessage').classList.remove('hidden');
+        document.getElementById('endedMessage').classList.add('hidden');
+      } else {
+        document.getElementById('voteActionArea').classList.remove('hidden');
+        document.getElementById('votedMessage').classList.add('hidden');
+        document.getElementById('endedMessage').classList.add('hidden');
+      }
+
+      startCountdown(deadline);
+    }
+
+    function startCountdown(deadline) {
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      const updateCountdown = () => {
+        const now = new Date();
+        const diff = deadline - now;
+
+        if (diff <= 0) {
+          document.getElementById('countdown').textContent = '已截止';
+          if (pollData && pollData.status !== 'ended') {
+            document.getElementById('voteActionArea').classList.add('hidden');
+            document.getElementById('endedMessage').classList.remove('hidden');
+            document.getElementById('votedMessage').classList.add('hidden');
+            pollData.status = 'ended';
+          }
+          clearInterval(countdownInterval);
+        } else {
+          const hours = Math.floor(diff / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+          document.getElementById('countdown').textContent =
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+      };
+
+      updateCountdown();
+      countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    function vote(option) {
+      if (hasVoted) {
+        alert('您已經投過票了！');
+        return;
+      }
+
+      const deadline = new Date(pollData.deadline);
+      if (new Date() > deadline || pollData.status === 'ended') {
+        alert('投票已截止');
+        return;
+      }
+
+      submitVote(option);
+    }
+
+    async function submitVote(option) {
+      try {
+        const response = await fetch(W6_GAS_API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'vote',
+            pollId: currentPollId,
+            option: option
+          }),
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          hasVoted = true;
+          const votedPolls = JSON.parse(localStorage.getItem('votedPolls') || '[]');
+          if (!votedPolls.includes(currentPollId)) {
+            votedPolls.push(currentPollId);
+            localStorage.setItem('votedPolls', JSON.stringify(votedPolls));
+          }
+
+          document.getElementById('votesA').textContent = result.votesA;
+          document.getElementById('votesB').textContent = result.votesB;
+          document.getElementById('voteActionArea').classList.add('hidden');
+          document.getElementById('votedMessage').classList.remove('hidden');
+
+          if (option === 'A') {
+            document.getElementById('voteCardA').classList.add('selected');
+          } else {
+            document.getElementById('voteCardB').classList.add('selected');
+          }
+        } else {
+          alert('投票失敗: ' + (result.message || '未知錯誤'));
+        }
+      } catch (error) {
+        console.error('投票錯誤:', error);
+        alert('網路錯誤，請重試');
+      }
+    }
+
+    async function endPollEarly() {
+      if (!currentPollId || !pollData) return;
+      if (!confirm('確定要提前結束投票並公布結果嗎？')) return;
+
+      try {
+        const response = await fetch(W6_GAS_API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'endPoll',
+            pollId: currentPollId
+          }),
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          pollData.status = 'ended';
